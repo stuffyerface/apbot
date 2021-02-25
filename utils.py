@@ -98,7 +98,7 @@ def get_pstats(prof,player,uuid):
   except:
     lvl = 0
   try:
-    reward = "{:,}".format(prof["rewardStreak"])
+    reward = "{:,}".format(prof["rewardScore"])
   except:
     reward = 0
   try:
