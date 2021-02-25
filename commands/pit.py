@@ -33,16 +33,10 @@ class Pit(BaseCommand):
           username = params[0]
           uuid = get_uuid(username)
           if(uuid == "ERROR"):
-            progress = -2
+            await message.channel.send("ERROR")
+            return
           else:
             progress = get_pitprogress(uuid)
           
-          if(progress == -2):
-            msg = f" {username} was not found in Mojang API"
-          elif(progress == "ERROR"):
-            msg = "An error occured talking to the API. Please try again later."
-          else:
-            msg = progress
-
 
           await message.channel.send(content= "", embed = progress)
