@@ -1,4 +1,5 @@
 from commands.base_command  import BaseCommand
+import discord
 
 # This, in addition to tweaking __all__ on commands/__init__.py, 
 # imports all classes inside the commands package.
@@ -26,6 +27,11 @@ async def handle_command(command, args, message, bot_client):
     # Retrieve the command
     cmd_obj = COMMAND_HANDLERS[command]
     if cmd_obj.params and len(args) < len(cmd_obj.params):
-        await message.channel.send(message.author.mention + " Insufficient parameters, type !commands for syntax.")
+        err = discord.Embed(
+          title = "Oops, you seem to have used the command incorrectly, try using ap!help for the proper command syntax.",
+          colour = discord.Colour.red()
+        )
+
+        await message.channel.send(content = "", embed = err)
     else:
         await cmd_obj.handle(args, message, bot_client)
