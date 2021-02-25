@@ -12,10 +12,7 @@ class faq(BaseCommand):
         super().__init__(description, params)
 
     async def handle(self, params, message, client):
-        perm = False
-        for x in message.author.roles:
-          if(str(x) == 'Verified'):
-            perm = True
+        perm = True
         if(perm):
           msg = discord.Embed(
             title = f"Stuffy Bot FAQ",
