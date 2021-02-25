@@ -5,8 +5,8 @@ from discord    import HTTPException
 from emoji      import emojize
 
 import discord
-import settings
 import requests
+import settings
 import json
 import os
 import math
@@ -231,6 +231,7 @@ def get_pitprogress(uuid):
   response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
   json_data = json.loads(response.text)
   if(json_data['success'] == False):
+    print(apiKey + uuid)
     return "ERROR"
   else:
     ret = json_data['player']['stats']['Pit']
@@ -311,6 +312,82 @@ def get_mwprog(prof,player,kit):
     progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
   #
+  # SHARK
+  #
+  elif(kit == "shark"):
+    progress = discord.Embed(
+      title = f"Shark skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      hammerhead = "{:,}".format(prof['shark_water_kills'])
+    except:
+      hammerhead = 0
+
+    
+
+    prog = ""
+    prog += f"Hammerhead: {hammerhead}/100\n"
+
+    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+
+  #
+  # DREADLORD
+  #
+
+  elif(kit == "dreadlord"):
+    progress = discord.Embed(
+      title = f"Dreadlord skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      rushlord = "{:,}".format(prof['dreadlord_wither_damage'])
+    except:
+      rushlord = 0
+
+    try:
+      breadlord = "{:,}".format(prof['dreadlord_bread_crafted'])
+    except:
+      breadlord = 0
+
+    
+
+    prog = ""
+    prog += f"Rushlord: {rushlord}/20,000\n"
+    prog += f"Breadlord: {breadlord}/617\n"
+
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+
+  #
+  # GOLEM
+  #
+
+  elif(kit == "golem"):
+    progress = discord.Embed(
+      title = f"Golem skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      timber = "{:,}".format(prof['golem_wood_chopped'])
+    except:
+      timber = 0
+    
+
+    prog = ""
+    prog += f"Timer!: {timber}/5,000\n"
+
+    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+
+  #
   # MOLEMAN
   #
 
@@ -370,7 +447,7 @@ def get_mwprog(prof,player,kit):
   else:
     progress = discord.Embed(
       title = f"Unsupported class '{kit}', try using one of these:",
-      description = "cow, hunter, moleman, or renegade\n\n Support for more classes is coming soon",
+      description = "cow, hunter, shark, dreadlord, golem, moleman, or renegade",
       colour = discord.Colour.red()
     )
   return progress
