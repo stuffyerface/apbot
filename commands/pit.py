@@ -37,6 +37,8 @@ class Pit(BaseCommand):
             return
           else:
             progress = get_pitprogress(uuid)
+            
+          print(progress)
           
 
           await message.channel.send(content= "", embed = progress)
