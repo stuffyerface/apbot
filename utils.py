@@ -388,6 +388,72 @@ def get_mwprog(prof,player,kit):
     progress.add_field(name = "1 tracked skin", value = f"{prog}")
 
   #
+  # HEROBRINE
+  #
+
+  elif(kit == "herobrine"):
+    progress = discord.Embed(
+      title = f"Herobrine skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      lucky_sunny = "{:,}".format(prof['herobrine_treasures_found'])
+    except:
+      lucky_sunny = 0
+
+    try:
+      seasons_greetings = "{:,}".format(prof['herobrine_iron_armor_gifted_december'])
+    except:
+      seasons_greetings = 0
+    
+
+    prog = ""
+    prog += f"Chests Found: {lucky_sunny}/1,000\n"
+    prog += f"Seasons Greetings: {seasons_greetings}/1,000\n"
+
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+
+
+  #
+  # ENDERMAN
+  #
+
+  elif(kit == "enderman"):
+    progress = discord.Embed(
+      title = f"Enderman skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      surprise = "{:,}".format(prof['enderman_activations'])
+    except:
+      surprise = 0
+
+    try:
+      try:
+        efk = prof['enderman_final_kills_melee_behind']
+      except:
+        efk = 0
+      try:
+        efa = prof['enderman_final_assists_melee_behind']
+      except:
+        efa = 0
+      sneak_attack = "{:,}".format(efk + efa)
+    except:
+      sneak_attack = 0
+    
+
+    prog = ""
+    prog += f"Surprise: {surprise}/2,500\n"
+    prog += f"Sneak Attack: {sneak_attack}/100\n"
+
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+  #
   # MOLEMAN
   #
 
@@ -415,6 +481,7 @@ def get_mwprog(prof,player,kit):
     prog += f"Heavy Eater: {heavy_eater}/1,000\n"
 
     progress.add_field(name = "2 tracked skins", value = f"{prog}")
+
 
   #
   # RENEGADE
@@ -447,7 +514,7 @@ def get_mwprog(prof,player,kit):
   else:
     progress = discord.Embed(
       title = f"Unsupported class '{kit}', try using one of these:",
-      description = "cow, hunter, shark, dreadlord, golem, moleman, or renegade",
+      description = "cow, hunter, shark, dreadlord, golem, herobrine, enderman, moleman, or renegade\n This feature is in beta, some classes are missing but all will be added eventually. Be Patient",
       colour = discord.Colour.red()
     )
   return progress
