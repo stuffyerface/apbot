@@ -12,7 +12,7 @@ import os
 import math
 import datetime
 
-apiKey = os.getenv('APIKEY')
+apiKey = '84cf2f1e-5328-4ebc-ae60-c0d38cae5394'
 
 # Returns a path relative to the bot directory
 def get_rel_path(rel_path):
