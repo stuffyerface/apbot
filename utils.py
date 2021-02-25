@@ -370,7 +370,7 @@ def get_mwprog(prof,player,kit):
   else:
     progress = discord.Embed(
       title = f"Unsupported class '{kit}', try using one of these:",
-      description = "cow, hunter, shark, dreadlord, golem, herobrine, pigman, zombie, arcanist, shaman, squid, enderman, blaze, skeleton, spider, pirate, creeper, assassin, werewolf, phoenix, automaton, moleman, renegade, or snowman",
+      description = "cow, hunter, moleman, or renegade\n\n Support for more classes is coming soon",
       colour = discord.Colour.red()
     )
   return progress
