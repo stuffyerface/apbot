@@ -9,3 +9,4 @@ pytz
 six
 tzlocal
 websockets
+requests
