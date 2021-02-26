@@ -453,6 +453,53 @@ def get_mwprog(prof,player,kit):
     prog += f"Sneak Attack: {sneak_attack}/100\n"
 
     progress.add_field(name = "2 tracked skins", value = f"{prog}")
+
+  #
+  # BLAZE
+  #
+  elif(kit == "blaze"):
+    progress = discord.Embed(
+      title = f"Blaze skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      high_on_ores = "{:,}".format(prof['blaze_amount_healed'])
+    except:
+      high_on_ores = 0
+    
+
+    prog = ""
+    prog += f"High on Ores: {high_on_ores}/2,000\n"
+
+    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+
+  #
+  # SPIDER
+  #
+  elif(kit == "spider"):
+    progress = discord.Embed(
+      title = f"Spider skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      geronimo = "{:,}".format(prof['spider_meters_fallen'])
+    except:
+      geronimo = 0
+    
+
+    prog = ""
+    prog += f"Geronimo: {geronimo}/25,000\n"
+
+    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+
+
+
   #
   # MOLEMAN
   #
@@ -511,10 +558,47 @@ def get_mwprog(prof,player,kit):
     prog += f"Captain Combo: {captain_combo}/20,000\n"
 
     progress.add_field(name = "2 tracked skins", value = f"{prog}")
+
+  #
+  # SNOWMAN
+  #
+  elif(kit == "snowman"):
+    progress = discord.Embed(
+      title = f"Snowman skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      school_cancelled = "{:,}".format(prof['snowman_blizzard_seconds_slow'])
+    except:
+      school_cancelled = 0
+
+    try:
+      frosty_friendship = "{:,}".format(prof['snowman_snowmen_built'])
+    except:
+      frosty_friendship = 0
+
+    try:
+      australian_winter = "{:,}".format(prof['snowman_snowmen_players_hit'])
+    except:
+      australian_winter = 0
+    
+
+    prog = ""
+    prog += f"School Cancelled: {school_cancelled}/7,200\n"
+    prog += f"Frosty Friendship: {frosty_friendship}/500\n"
+    prog += f"Australian Winter (seasonal): {australian_winter}/500\n"
+
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
+
+
+
   else:
     progress = discord.Embed(
       title = f"Unsupported class '{kit}', try using one of these:",
-      description = "cow, hunter, shark, dreadlord, golem, herobrine, enderman, moleman, or renegade\n This feature is in beta, some classes are missing but all will be added eventually. Be Patient",
+      description = "cow, hunter, shark, dreadlord, golem, herobrine, enderman, blaze, spider, moleman, renegade, or snowman\n\n This feature is in beta, some classes are missing but all will be added eventually. Be Patient",
       colour = discord.Colour.red()
     )
   return progress
