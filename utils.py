@@ -231,11 +231,11 @@ def legs(profile):
   legs.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
 
   legs.add_field(
-    name = f"{count}/24 Achieved",
+    name = f"{count}/24 Achieved ({round(100*count/24,2)}%)",
     value = f"{data}"
   )
   legs.add_field(
-    name = f"({round(100*count/24,2)}%)",
+    name = f"\u200b",
     value = f"{data2}"
   )
 
