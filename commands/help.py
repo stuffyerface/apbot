@@ -12,7 +12,10 @@ class help(BaseCommand):
         super().__init__(description, params)
 
     async def handle(self, params, message, client):
-        perm = True
+        perm = False
+        for x in message.author.roles:
+          if(str(x) == 'Verified'):
+            perm = True
         if(perm):
           
           cmds = "example: ap!pit Stuffy"
@@ -22,6 +25,7 @@ class help(BaseCommand):
           cmds += "**ap!stats <player>** → Gives an overview of a players hypixel stats\n"
           cmds += "**ap!pit <player>** → Shows progress on some pesky challenge achievements in pit\n"
           cmds += "**ap!mw <player> <class>** → Shows progress on skins for a certain mega walls class\n"
+          cmds += "**ap!legs <player>** → Shows all legendary skins in mega walls for a player\n"
 
 
           msg = discord.Embed(
