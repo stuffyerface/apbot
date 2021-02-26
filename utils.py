@@ -59,6 +59,196 @@ def get_discord(uuid):
     except:
       return "ERROR"
 
+def legs(profile):
+  try:
+    ap = profile['player']['achievementsOneTime']
+  except:
+    return "ERROR"
+  player = profile['player']['displayname']
+  
+  count = 0
+  data = ""
+  if('walls3_legendary_cow' in ap):
+    count += 1
+    data += ":gem: Legendary Cow\n"
+  else:
+    data += ":x: Legendary Cow\n"
+
+  if('walls3_legendary_hunter' in ap):
+    count += 1
+    data += ":gem: Legendary Hunter\n"
+  else:
+    data += ":x: Legendary Hunter\n"
+
+  if('walls3_legendary_shark' in ap):
+    count += 1
+    data += ":gem: Legendary Shark\n"
+  else:
+    data += ":x: Legendary Shark\n"
+
+  if('walls3_legendary_dreadlord' in ap):
+    count += 1
+    data += ":gem: Legendary Dreadlord\n"
+  else:
+    data += ":x: Legendary Dreadlord\n"
+
+  if('walls3_legendary_golem' in ap):
+    count += 1
+    data += ":gem: Legendary Golem\n"
+  else:
+    data += ":x: Legendary Golem\n"
+
+  if('walls3_legendary_herobrine' in ap):
+    count += 1
+    data += ":gem: Legendary Herobrine\n"
+  else:
+    data += ":x: Legendary Herobrine\n"
+
+  if('walls3_legendary_pigman' in ap):
+    count += 1
+    data += ":gem: Legendary Pigman\n"
+  else:
+    data += ":x: Legendary Pigman\n"
+
+  if('walls3_legendary_zombie' in ap):
+    count += 1
+    data += ":gem: Legendary Zombie\n"
+  else:
+    data += ":x: Legendary Zombie\n"
+
+  if('walls3_legendary_arcanist' in ap):
+    count += 1
+    data += ":gem: Legendary Arcanist\n"
+  else:
+    data += ":x: Legendary Arcanist\n"
+
+  if('walls3_legendary_shaman' in ap):
+    count += 1
+    data += ":gem: Legendary Shaman\n"
+  else:
+    data += ":x: Legendary Shaman\n"
+
+  if('walls3_legendary_squid' in ap):
+    count += 1
+    data += ":gem: Legendary Squid\n"
+  else:
+    data += ":x: Legendary Squid\n"
+
+  if('walls3_legendary_enderman' in ap):
+    count += 1
+    data += ":gem: Legendary Enderman\n"
+  else:
+    data += ":x: Legendary Enderman\n"
+
+  data2 = ""
+
+  if('walls3_legendary_blaze' in ap):
+    count += 1
+    data2 += ":gem: Legendary Blaze\n"
+  else:
+    data2 += ":x: Legendary Blaze\n"
+
+  if('walls3_legendary_skeleton' in ap):
+    count += 1
+    data2 += ":gem: Legendary Skeleton\n"
+  else:
+    data2 += ":x: Legendary Skeleton\n"
+
+  if('walls3_legendary_spider' in ap):
+    count += 1
+    data2 += ":gem: Legendary Spider\n"
+  else:
+    data2 += ":x: Legendary Spider\n"
+
+  if('walls3_legendary_pirate' in ap):
+    count += 1
+    data2 += ":gem: Legendary Pirate\n"
+  else:
+    data2 += ":x: Legendary Pirate\n"
+
+  if('walls3_legendary_creeper' in ap):
+    count += 1
+    data2 += ":gem: Legendary Creeper\n"
+  else:
+    data2 += ":x: Legendary Creeper\n"
+
+  if('walls3_legendary_assassin' in ap):
+    count += 1
+    data2 += ":gem: Legendary Assassin\n"
+  else:
+    data2 += ":x: Legendary Assassin\n"
+
+
+  if('walls3_legendary_werewolf' in ap):
+    count += 1
+    data2 += ":gem: Legendary Werewolf\n"
+  else:
+    data2 += ":x: Legendary Werewolf\n"
+
+
+  if('walls3_legendary_phoenix' in ap):
+    count += 1
+    data2 += ":gem: Legendary Phoenix\n"
+  else:
+    data2 += ":x: Legendary Phoenix\n"
+
+
+  if('walls3_legendary_automaton' in ap):
+    count += 1
+    data2 += ":gem: Legendary Automaton\n"
+  else:
+    data2 += ":x: Legendary Automaton\n"
+
+
+  if('walls3_legendary_moleman' in ap):
+    count += 1
+    data2 += ":gem: Legendary Moleman\n"
+  else:
+    data2 += ":x: Legendary Moleman\n"
+
+
+  if('walls3_legendary_renegade' in ap):
+    count += 1
+    data2 += ":gem: Legendary Renegade\n"
+  else:
+    data2 += ":x: Legendary Renegade\n"
+
+
+  if('walls3_legendary_snowman' in ap):
+    count += 1
+    data2 += ":gem: Legendary Snowman\n"
+  else:
+    data2 += ":x: Legendary Snowman\n"
+
+  
+  legs = discord.Embed(
+    title = f"{player}'s Legendaries",
+    colour = discord.Colour.orange()
+  )
+
+  legs.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+
+  legs.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+  legs.add_field(
+    name = f"{count}/24 Achieved",
+    value = f"{data}"
+  )
+  legs.add_field(
+    name = f"({round(100*count/24,2)}%)",
+    value = f"{data2}"
+  )
+
+  return legs
+
+def get_legs(uuid):
+  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  json_data = json.loads(response.text)
+  if(json_data['success'] == 'false'):
+    return "ERROR"
+  else:
+    return legs(json_data)
+
 def guild(uuid):
   response = requests.get(f"https://api.hypixel.net/guild?key={apiKey}&player={uuid}")
   json_data = json.loads(response.text)
