@@ -294,11 +294,6 @@ def get_mwprog(prof,player,kit):
       treasure_hunter = 0
 
     try:
-      ba_boom = "{:,}".format(prof['hunter_new_a'])
-    except:
-      ba_boom = 0
-
-    try:
       cake_hunter = "{:,}".format(prof['cakes_found'])
     except:
       cake_hunter = 0
@@ -306,10 +301,9 @@ def get_mwprog(prof,player,kit):
 
     prog = ""
     prog += f"Treasure Hunter: {treasure_hunter}/300\n"
-    prog += f"BA-BOOM!: {ba_boom}/5\n"
     prog += f"Cake Hunter: {cake_hunter}/150\n"
 
-    progress.add_field(name = "3 tracked skins", value = f"{prog}")
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
 
   #
   # SHARK
