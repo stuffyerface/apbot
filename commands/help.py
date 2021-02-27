@@ -24,6 +24,7 @@ class help(BaseCommand):
           cmds += "**ap!mw <player> <class>** → Shows progress on skins for a certain mega walls class\n"
           cmds += "**ap!legs <player>** → Shows all legendary skins in mega walls for a player\n"
           cmds += "**ap!blitz <player>** → Shows progress on ultimate kits in blitz\n"
+          cmds += "**ap!tourney <player>** → Shows current tournament hall data on games played and tributes earned\n"
 
 
           msg = discord.Embed(
