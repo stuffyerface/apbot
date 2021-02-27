@@ -59,6 +59,19 @@ def get_discord(uuid):
     except:
       return "ERROR"
 
+def get_quests(prof):
+  q = 0
+  used = []
+  for x in prof['quests']:
+    
+    for y in prof['quests'][x]:
+      qs = (prof['quests'][x]).get('completions',[])
+      if x not in used:
+        used += [x]
+        q += len(qs)
+
+  return q
+
 def blitz(profile):
   try:
     bz = profile['player']['stats']['HungerGames']
@@ -369,7 +382,7 @@ def get_pstats(prof,player,uuid):
   except:
     wins = 0
   try:
-    quests = "{:,}".format(prof["achievements"]["general_quest_master"])
+    quests = "{:,}".format(get_quests(prof))
   except:
     quests = 0
   try:
