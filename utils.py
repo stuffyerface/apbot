@@ -59,6 +59,54 @@ def get_discord(uuid):
     except:
       return "ERROR"
 
+def get_tourney(uuid):
+  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  json_data = json.loads(response.text)
+  if(json_data['success'] == 'false'):
+    return "ERROR"
+  else:
+    tourney = discord.Embed(
+      title = f"Active Tournament: CVC Defusal #2",
+      colour = discord.Colour.orange()
+    )
+
+    tourney.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+
+    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/CVC-64.png")
+
+    player = json_data['player']['displayname']
+    try:
+      new = json_data['player']['tourney']['mcgo_defusal_1']
+    except:
+      new = []
+
+    try:
+      games = new['games_played']
+    except:
+      games = 0
+
+    try:
+      tributes = new['tributes_earned']
+    except:
+      tributes = 0
+
+    try:
+      minplayed = new['playtime']
+    except:
+      minplayed = 0
+
+    val = f"{player} has played **{games}/40** games so far\n"
+    val += f"with **{tributes}/100** tributes earned\n"
+    val += f"and **{minplayed}** minutes played!\n"
+
+    tourney.add_field(
+      name = f"\u200b",
+      value = f"{val}"
+    )
+
+    return tourney
+    
+
 def get_quests(prof):
   q = 0
   used = []
