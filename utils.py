@@ -59,6 +59,75 @@ def get_discord(uuid):
     except:
       return "ERROR"
 
+def blitz(profile):
+  try:
+    bz = profile['player']['stats']['HungerGames']
+  except:
+    return "ERROR"
+  player = profile['player']['displayname']
+  count = 0
+  data = ""
+
+  try:
+    b1 = bz['exp_ranger']
+  except:
+    b1 = 0
+
+  try:
+    b2 = bz['exp_donkeytamer']
+  except:
+    b2 = 0
+  
+  try:
+    b3 = bz['exp_phoenix']
+  except:
+    b3 = 0
+
+  try:
+    b4 = bz['exp_warrior']
+  except:
+    b4 = 0
+
+  b1a = f" ({round(b1/100,2)}%)"
+  b1 = "{:,}".format(b1)
+  b2a = f" ({round(b2/100,2)}%)"
+  b2 = "{:,}".format(b2)
+  b3a = f" ({round(b3/100,2)}%)"
+  b3 = "{:,}".format(b3)
+  b4a = f" ({round(b4/100,2)}%)"
+  b4 = "{:,}".format(b4)
+
+
+  data += f"**Ranger** {b1}/10,000{b1a}\n"
+  data += f"**DonkeyTamer** {b2}/10,000{b2a}\n"
+  data += f"**Phoenix** {b3}/10,000{b3a}\n"
+  data += f"**Warrior** {b4}/10,000{b4a}\n"
+
+  blitz = discord.Embed(
+    title = f"{player}'s Blitz Ultimate Kit Xp",
+    colour = discord.Colour.orange()
+  )
+
+  blitz.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+
+  blitz.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/SG-64.png")
+
+  blitz.add_field(
+    name = f"\u200b",
+    value = f"{data}"
+  )
+
+  return blitz
+
+def get_blitz(uuid):
+  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  json_data = json.loads(response.text)
+  if(json_data['success'] == 'false'):
+    return "ERROR"
+  else:
+    return blitz(json_data)
+
+
 def legs(profile):
   try:
     ap = profile['player']['achievementsOneTime']
