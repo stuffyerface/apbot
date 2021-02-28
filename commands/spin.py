@@ -137,8 +137,5 @@ class Spin(BaseCommand):
               value = "\u200b"
             )
             spin.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/header-logo.png")
-
-          
-
-
-          await message.channel.send(content= "", embed = spin)
+          msg = message.author.mention
+          await message.channel.send(content= msg, embed = spin)
