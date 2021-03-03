@@ -814,6 +814,34 @@ def get_mwprog(prof,player,kit):
     progress.add_field(name = "1 tracked skin", value = f"{prog}")
 
   #
+  # Skeleton
+  #
+  elif(kit == "skeleton"):
+    progress = discord.Embed(
+      title = f"Skeleton skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      marksman = "{:,}".format(prof['skeleton_final_kills_ranged_30'])
+    except:
+      marksman = 0
+
+    try:
+      skele_best_friend = "{:,}".format(prof['skeleton_diamond_ore_broken'])
+    except:
+      skele_best_friend = 0
+    
+
+    prog = ""
+    prog += f"Marksman: {marksman}/25\n"
+    prog += f"Skeleton's Best Friend: {skele_best_friend}/50\n"
+
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+
+  #
   # SPIDER
   #
   elif(kit == "spider"):
@@ -834,6 +862,58 @@ def get_mwprog(prof,player,kit):
     prog += f"Geronimo: {geronimo}/25,000\n"
 
     progress.add_field(name = "1 tracked skin", value = f"{prog}")
+
+  
+  #
+  # CREEPER
+  #
+  elif(kit == "creeper"):
+    progress = discord.Embed(
+      title = f"Creeper skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    
+    try:
+      mass_destruction = "{:,}".format(prof['creeper_a_blocks_broken'])
+    except:
+      mass_destruction = 0
+    
+
+    prog = ""
+    prog += f"Mass Destruction: {mass_destruction}/3,000\n"
+
+    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+
+  #
+  # ASSASSIN
+  #
+  elif(kit == "assassin"):
+    progress = discord.Embed(
+      title = f"Assassin skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    
+    try:
+      dont_blink = "{:,}".format(prof['assassin_enemies_hit'])
+    except:
+      dont_blink = 0
+    try:
+      alchemy_100 = "{:,}".format(prof['assassin_master_alechmy_hearts'])
+    except:
+      alchemy_100 = 0
+    
+
+    prog = ""
+    prog += f"Don't Blink: {dont_blink}/1,200\n"
+    prog += f"Alchemy 100: {alchemy_100}/1,000\n"
+
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
 
 
   #
@@ -867,6 +947,28 @@ def get_mwprog(prof,player,kit):
     prog += f"Hunting Season: {hunting_season}/50,000\n"
 
     progress.add_field(name = "3 tracked skins", value = f"{prog}")
+
+  #
+  # PHOENIX
+  #
+  elif(kit == "phoenix"):
+    progress = discord.Embed(
+      title = f"Phoenix skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      nights_rest = "{:,}".format(prof['phoenix_amount_healed'])
+    except:
+      nights_rest = 0
+    
+
+    prog = ""
+    prog += f"Night's Rest: {nights_rest}/1,000\n"
+
+    progress.add_field(name = "1 tracked skin", value = f"{prog}")
 
 
 
@@ -968,7 +1070,7 @@ def get_mwprog(prof,player,kit):
   else:
     progress = discord.Embed(
       title = f"Unsupported class '{kit}', try using one of these:",
-      description = "cow, hunter, shark, dreadlord, golem, herobrine, zombie, enderman, blaze, spider, werewolf, moleman, renegade, or snowman\n\n This feature is in beta, some classes are missing but all will be added eventually. Be Patient",
+      description = "cow, hunter, shark, dreadlord, golem, herobrine, zombie, enderman, blaze, skeleton, spider, creeper, assassin, werewolf, phoenix, moleman, renegade, or snowman\n\n This feature is in beta, some classes are missing but all will be added eventually. Be Patient",
       colour = discord.Colour.red()
     )
   return progress
