@@ -81,6 +81,26 @@ def get_tourney(uuid):
       new = []
 
     try:
+      tkills = json_data['player']['stats']['MCGO']['kills_tourney_mcgo_defusal_1']
+    except:
+      tkills = 0
+
+    try:
+      tdeaths = json_data['player']['stats']['MCGO']['deaths_tourney_mcgo_defusal_1']
+    except:
+      tdeaths = 0
+
+    try:
+      twins = json_data['player']['stats']['MCGO']['game_wins_tourney_mcgo_defusal_1']
+    except:
+      twins = 0
+
+    try:
+      trwins = json_data['player']['stats']['MCGO']['round_wins_tourney_mcgo_defusal_1']
+    except:
+      trwins = 0
+
+    try:
       games = new['games_played']
     except:
       games = 0
@@ -97,7 +117,9 @@ def get_tourney(uuid):
 
     val = f"{player} has played **{games}/40** games so far\n"
     val += f"with **{tributes}/100** tributes earned\n"
-    val += f"and **{minplayed}** minutes played!\n"
+    val += f"and **{minplayed}** minutes played!\n\n"
+    val += f"Kills: {tkills}, Deaths: {tdeaths}\n"
+    val += f"Round Wins: {trwins}, Wins: {twins}\n"
 
     tourney.add_field(
       name = f"\u200b",
