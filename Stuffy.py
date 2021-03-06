@@ -57,14 +57,15 @@ def main():
     # The message handler for both new message and edits
     async def common_handle_message(message):
         text = message.content
-        if text.startswith(settings.COMMAND_PREFIX) and text != settings.COMMAND_PREFIX: # and message.channel.id == 812553474523791381:
-            cmd_split = text[len(settings.COMMAND_PREFIX):].split()
-            try:
-                await message_handler.handle_command(cmd_split[0].lower(), 
-                                      cmd_split[1:], message, client)
-            except:
-                print("Error while handling message", flush=True)
-                raise
+        for x in range(len(settings.COMMAND_PREFIX)):
+          if text.startswith(settings.COMMAND_PREFIX[x]) and text != settings.COMMAND_PREFIX[x]:
+              cmd_split = text[len(settings.COMMAND_PREFIX[x]):].split()
+              try:
+                  await message_handler.handle_command(cmd_split[0].lower(), 
+                                        cmd_split[1:], message, client)
+              except:
+                  print("Error while handling message", flush=True)
+                  raise
 
     @client.event
     async def on_message(message):
