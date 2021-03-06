@@ -21,7 +21,7 @@ async def handle_command(command, args, message, bot_client):
     if command not in COMMAND_HANDLERS:
         return
 
-    print(f"{message.author.name}: {settings.COMMAND_PREFIX}{command} " 
+    print(f"{message.author.name}: {settings.COMMAND_PREFIX[0]}{command} " 
           + " ".join(args))
 
     # Retrieve the command
