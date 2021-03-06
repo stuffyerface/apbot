@@ -2,7 +2,7 @@ import os
 
 # The prefix that will be used to parse commands.
 # It doesn't have to be a single character!
-COMMAND_PREFIX = "ap!"
+COMMAND_PREFIX = ["ap!", "Ap!", "AP!", "aP!"]
 
 # The bot token. Keep this secret!
 
