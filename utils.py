@@ -127,6 +127,83 @@ def get_tourney(uuid):
     )
 
     return tourney
+
+def get_tnt(uuid):
+  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  json_data = json.loads(response.text)
+  if(json_data['success'] == 'false'):
+    return "ERROR"
+  else:
+    
+    player = json_data['player']['displayname']
+    tnt = discord.Embed(
+      title = f"TNT Games Progress for {player}",
+      colour = discord.Colour.red()
+    )
+
+    tnt.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+
+    tnt.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/TNT-64.png")
+
+    try:
+      new = json_data['player']['achievements']
+    except:
+      new = []
+
+    try:
+      trun = "{:,}".format(new['tntgames_tnt_run_wins'])
+    except:
+      trun = 0
+    try:
+      bran = "{:,}".format(new['tntgames_block_runner'])
+    except:
+      bran = 0
+    try:
+      prun = "{:,}".format(new['tntgames_pvp_run_wins'])
+    except:
+      prun = 0
+    try:
+      prunk = "{:,}".format(new['tntgames_pvp_run_killer'])
+    except:
+      prunk = 0
+    try:
+      twiz = "{:,}".format(new['tntgames_wizards_wins'])
+    except:
+      twiz = 0
+    try:
+      twizk = "{:,}".format(new['tntgames_tnt_wizards_kills'])
+    except:
+      twizk = 0
+    try:
+      tbow = "{:,}".format(new['tntgames_bow_spleef_wins'])
+    except:
+      tbow = 0
+    try:
+      tag = "{:,}".format(new['tntgames_tnt_tag_wins'])
+    except:
+      tag = 0
+    try:
+      ttag = "{:,}".format(new['tntgames_clinic'])
+    except:
+      ttag = 0
+
+
+    val = f"Tnt Run Wins: {trun}/500\n"
+    val += f"Blocks Ran: {bran}/750,000\n\n"
+    val += f"Pvp Run Wins: {prun}/250\n"
+    val += f"Pvp Run Kills: {prunk}/750\n\n"
+    val += f"Wizard Wins: {twiz}/500\n"
+    val += f"Wizard Kills: {twizk}/10,000\n\n"
+    val += f"Bow Spleef Wins: {tbow}/500\n\n"
+    val += f"Tnt Tag Wins: {tag}/150\n"
+    val += f"Tnt Tag Tags: {ttag}/7,500\n"
+
+    tnt.add_field(
+      name = f"\u200b",
+      value = f"{val}"
+    )
+
+    return tnt
     
 
 def get_quests(prof):
