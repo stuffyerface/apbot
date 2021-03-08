@@ -33,6 +33,38 @@ def get_emoji(emoji_name, fail_silently=False):
 
     return the_emoji
 
+def get_roles(username):
+  roles = []
+  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&name={username}")
+  json_data = json.loads(response.text)
+  try:
+    ap = json_data['player']['achievementPoints']
+  except:
+    ap = 0
+  
+  ap = math.floor(ap/1000)
+  roles += [f'{ap}K AP']
+  lvl = hpLvl(json_data['player']['networkExp'])
+  lv = 0
+  if(lvl >= 500):
+    lv = 500
+  elif(lvl >= 400):
+    lv = 400
+  elif(lvl >= 300):
+    lv = 300
+  elif(lvl >= 250):
+    lv = 250
+  elif(lvl >= 200):
+    lv = 200
+  elif(lvl >= 150):
+    lv = 150
+  elif(lvl >= 100):
+    lv = 100
+  
+  if(lv != 0):
+    roles += [f'Level {str(lv)}+']
+
+  return roles
 
 def get_uuid(player):
   response = requests.get(f"https://api.mojang.com/users/profiles/minecraft/{player}")
