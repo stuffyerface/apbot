@@ -67,7 +67,6 @@ class Update(BaseCommand):
                 for x in range(len(roles)):
                   role = discord.utils.get(member.guild.roles, name=roles[x])
                   await member.add_roles(role)
-                  await message.channel.send(content = f"Congrats to {member.mention} for earning the {role} role")
               except:
                 print("Insufficient Permissions for role change")
               for x in roles:
