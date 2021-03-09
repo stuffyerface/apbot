@@ -11,6 +11,7 @@ import json
 import os
 import math
 import datetime
+import achList
 
 apiKey = os.getenv('APIKEY')
 
@@ -41,6 +42,8 @@ def get_roles(username):
     ap = json_data['player']['achievementPoints']
   except:
     ap = 0
+
+  
   
   ap = math.floor(ap/1000)
   roles += [f'{ap}K AP']
@@ -63,6 +66,27 @@ def get_roles(username):
   
   if(lv != 0):
     roles += [f'Level {str(lv)}+']
+  
+  achs = achList.achs
+  for x in range(len(achs)):
+    giveR = True
+    for y in achs[x][0]:
+      if y in json_data['player']['achievementsOneTime']:
+        pass
+      else:
+        print(y)
+        giveR = False
+        break
+    if(giveR):
+      for y in achs[x][1]:
+        if json_data['player']['achievements'][y[0]] < y[1]:
+          giveR= False
+          break
+        else:
+          continue
+
+    if(giveR):
+       roles += [achs[x][2]]
 
   return roles
 
