@@ -37,7 +37,7 @@ def get_emoji(emoji_name, fail_silently=False):
 def removeroles(member,roles):
   for x in member.roles:
     if str(x) in roles:
-      member.remove_roles(x)
+      await member.remove_roles(x)
   return
 
 
