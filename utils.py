@@ -34,6 +34,13 @@ def get_emoji(emoji_name, fail_silently=False):
 
     return the_emoji
 
+def removeroles(member,roles):
+  for x in member.roles:
+    if str(x) in roles:
+      member.remove_roles(x)
+  return
+
+
 def get_roles(username):
   roles = []
   response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&name={username}")
@@ -74,7 +81,6 @@ def get_roles(username):
       if y in json_data['player']['achievementsOneTime']:
         pass
       else:
-        print(y)
         giveR = False
         break
     if(giveR):
@@ -84,7 +90,6 @@ def get_roles(username):
           break
         else:
           continue
-
     if(giveR):
        roles += [achs[x][2]]
 
