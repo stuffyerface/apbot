@@ -71,8 +71,8 @@ class Update(BaseCommand):
               except:
                 print("Insufficient Permissions for role change")
               for x in roles:
-                channel = client.get_channel(818245966317748264)
-                await channel.send(content = f":gem: Congrats to {member.mention} for earning the {x} role!")
+                chan = client.get_channel(818245966317748264)
+                await chan.send(content = f":gem: Congrats to {member.mention} for earning the {x} role!")
 
 
               msg = f"Successfully updated {get_Name(username)}"
