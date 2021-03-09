@@ -31,7 +31,7 @@ class Update(BaseCommand):
         # 'client' is the bot Client object
         perm = False
         member = message.author
-        if(message.channel.id == 795177576746319884):
+        if(message.channel.id == 818244035277881344):
           perm = True
         if(perm):
           username = params[0]
