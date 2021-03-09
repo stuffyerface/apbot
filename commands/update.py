@@ -59,9 +59,9 @@ class Update(BaseCommand):
                   roles.remove(str(x))
               for x in roles:
                 if x in lvlroles:
-                  removeroles(member,lvlroles)
+                  await removeroles(member,lvlroles)
                 if x in aproles:
-                  removeroles(member, aproles)
+                  await removeroles(member, aproles)
               print(roles)
               try:
                 for x in range(len(roles)):
