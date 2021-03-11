@@ -12,6 +12,7 @@ import os
 import math
 import datetime
 import achList
+import embeds
 
 apiKey = os.getenv('APIKEY')
 
@@ -82,11 +83,13 @@ def get_roles(username):
         pass
       else:
         giveR = False
+        print(f"{username} does not have {y} achievement")
         break
     if(giveR):
       for y in achs[x][1]:
         if json_data['player']['achievements'][y[0]] < y[1]:
           giveR= False
+          print(f"{username} does not have {y} requirements")
           break
         else:
           continue
