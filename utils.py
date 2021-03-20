@@ -149,26 +149,16 @@ def get_roles(username):
   if(lv != 0):
     roles += [f'Level {str(lv)}+']
   
-  achs = achList.achs
-  for x in range(len(achs)):
-    giveR = True
-    for y in achs[x][0]:
-      if y in json_data['player']['achievementsOneTime']:
-        pass
-      else:
-        giveR = False
-        print(f"{username} does not have {y} achievement")
-        break
-    if(giveR):
-      for y in achs[x][1]:
-        if json_data['player']['achievements'][y[0]] < y[1]:
-          giveR= False
-          print(f"{username} does not have {y} requirements")
-          break
-        else:
-          continue
-    if(giveR):
-       roles += [achs[x][2]]
+  maxes = get_maxes(get_uuid(username))
+  seasonal = 0
+  for x in maxes:
+    if x == "Summer" or x == "Halloween" or x == "Christmas" or x == "Easter":
+      seasonal += 1
+    else:
+      roles += ["Max " + x]
+  if seasonal == 4:
+    roles += ["Max Seasonal"]
+
 
   return roles
 
