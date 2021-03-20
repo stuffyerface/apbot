@@ -35,6 +35,7 @@ def main():
             return
 
         this.running = True
+        
 
         # Set the playing status
         if settings.NOW_PLAYING:

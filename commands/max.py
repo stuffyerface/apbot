@@ -8,8 +8,8 @@ from random                 import randint
 # but in lowercase
 
 # So, a command class named Random will generate a 'random' command
-
-class Tourney(BaseCommand):
+emoji1 = "<:achievement:819360686290370567>"
+class Max(BaseCommand):
 
     def __init__(self):
         # A quick description for the help message
@@ -36,7 +36,7 @@ class Tourney(BaseCommand):
           if(uuid == "ERROR"):
             progress = -2
           else:
-            progress = get_tourney(uuid)
+            progress = get_maxes(uuid)
           
           if(progress == -2):
             msg = f" {username} was not found in Mojang API"
@@ -45,8 +45,17 @@ class Tourney(BaseCommand):
           else:
             msg = progress
 
+          maxes = ""
+          for x in progress:
+            maxes += f"{emoji1} " + x + "\n"
+          em = discord.Embed(
+            title = f"{get_Name(username)} has {len(progress)} max games",
+            description = f"{maxes}",
+            colour = discord.Colour.purple()
+          )
+          em.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+          em.set_thumbnail(url = f"https://crafatar.com/avatars/{uuid}")
 
-
-          await message.channel.send(content= "", embed = progress)
+          await message.channel.send(content = "", embed = em)
         else:
           await message.channel.send(content = "", embed = embeds.emPremium)

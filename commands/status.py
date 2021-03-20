@@ -9,11 +9,11 @@ from random                 import randint
 
 # So, a command class named Random will generate a 'random' command
 
-class Tourney(BaseCommand):
+class Status(BaseCommand):
 
     def __init__(self):
         # A quick description for the help message
-        description = "Gives info on the current tournament"
+        description = "Shows mega walls legendaries of a player"
         # A list of parameters that the command will take as input
         # Parameters will be separated by spaces and fed to the 'params' 
         # argument in the handle() method
@@ -36,7 +36,7 @@ class Tourney(BaseCommand):
           if(uuid == "ERROR"):
             progress = -2
           else:
-            progress = get_tourney(uuid)
+            progress = get_status(uuid)
           
           if(progress == -2):
             msg = f" {username} was not found in Mojang API"
@@ -44,9 +44,16 @@ class Tourney(BaseCommand):
             msg = "An error occured talking to the API. Please try again later."
           else:
             msg = progress
+          val = ""
+          if progress == False:
+            val = "not "
 
+          embed = discord.Embed(
+            title = f"{get_Name(username)} is {val}online.",
+            colour = discord.Colour.blue()
+          )
+          embed.set_thumbnail(url = f"https://crafatar.com/avatars/{uuid}?size=100")
 
-
-          await message.channel.send(content= "", embed = progress)
+          await message.channel.send(content= "", embed = embed)
         else:
-          await message.channel.send(content = "", embed = embeds.emPremium)
+          await message.channel.send(content= "", embed = embeds.emPremium)

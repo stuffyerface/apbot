@@ -125,7 +125,7 @@ class Spin(BaseCommand):
           if(len(roll) > 0):
             spin.add_field(
               name = f"{spun}",
-              value = "Ping a Staff member to update your\nname in the sheet!\n\nGood Luck!"
+              value = "That's gonna be a tough one!\n\nGood Luck!"
             )
           else:
             spin = discord.Embed(

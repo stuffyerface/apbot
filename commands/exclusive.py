@@ -5,7 +5,7 @@ import embeds
 
 # This is a convenient command that automatically generates a helpful
 # message showing all available commands
-class help(BaseCommand):
+class exclusive(BaseCommand):
 
     def __init__(self):
         description = "Displays this help message"
@@ -16,7 +16,7 @@ class help(BaseCommand):
         perm = True
         if(perm):
           
-          msg = embeds.emHelp
+          msg = embeds.emExclusive
 
 
           msg.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")

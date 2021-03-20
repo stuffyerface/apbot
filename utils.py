@@ -14,7 +14,14 @@ import datetime
 import achList
 import embeds
 
+
+apres = requests.get("https://api.hypixel.net/resources/achievements")
+achres = json.loads(apres.text)
+
 apiKey = os.getenv('APIKEY')
+
+emoji1 = "<:achievement:819360686290370567>"
+emoji2 = "<:fail:819360838291816458>"
 
 # Returns a path relative to the bot directory
 def get_rel_path(rel_path):
@@ -41,6 +48,75 @@ async def removeroles(member,roles):
       await member.remove_roles(x)
   return
 
+def get_status(uuid):
+  response = requests.get(f"https://api.hypixel.net/status?key={apiKey}&uuid={uuid}")
+  json_data = json.loads(response.text)
+  if json_data["success"] == False:
+    print("Error getting status for " + uuid)
+    return "Error"
+  else:
+    if json_data["session"]["online"] == True:
+      return True
+    else:
+      return False
+
+def checkperm(member):
+  for x in member.roles:
+    if 795115422185816076 == x.id or 818283784763473952 == x.id:
+      return True
+  return False
+
+def get_profile(uuid):
+  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  json_data = json.loads(response.text)
+  if json_data["success"] == False:
+    print("Error getting profile for " + uuid)
+    return "Error"
+  
+  return json_data
+
+def get_maxes(uuid):
+  profile = get_profile(uuid)
+  aplist = achList.aplist
+  maxes = []
+  for x in aplist:
+    includelegacy = False
+    apgame = x[0]
+    apgamename = x[1]
+    if apgame in ["skyclash", "truecombat"]:
+      includelegacy = True
+    tempgive = True
+    for y in achres['achievements'][apgame]["one_time"]:
+      apdata = apgame + "_" + y.lower()
+      try:
+        if achres['achievements'][apgame]["one_time"][y]["legacy"] == True:
+          legacy = True
+      except:
+        legacy = False
+      if apdata not in profile["player"]["achievementsOneTime"] and ((not legacy) or includelegacy):
+        tempgive = False
+        print(f"Missing {apdata}")
+        break
+    if(tempgive):
+      for y in achres['achievements'][apgame]["tiered"]:
+        apdata = apgame + "_" + y.lower()
+        try:
+          playerap = profile["player"]["achievements"][apdata]
+        except:
+          playerap = 0
+        try:
+          if achres['achievements'][apgame]["tiered"][y]["legacy"] == True:
+            legacy = True
+        except:
+          legacy = False
+        if playerap < achres['achievements'][apgame]["tiered"][y]["tiers"][-1]["amount"] and ((not legacy) or includelegacy):
+          tempgive = False
+          print("Missing " + achres['achievements'][apgame]["tiered"][y]["name"])
+          break
+    if(tempgive):
+      maxes += [apgamename]
+  return maxes
+
 
 def get_roles(username):
   roles = []
@@ -51,8 +127,6 @@ def get_roles(username):
   except:
     ap = 0
 
-  
-  
   ap = math.floor(ap/1000)
   roles += [f'{ap}K AP']
   lvl = hpLvl(json_data['player']['networkExp'])
@@ -363,155 +437,155 @@ def legs(profile):
   data = ""
   if('walls3_legendary_cow' in ap):
     count += 1
-    data += ":gem: Legendary Cow\n"
+    data += f"{emoji1} Legendary Cow\n"
   else:
-    data += ":x: Legendary Cow\n"
+    data += f"{emoji2} Legendary Cow\n"
 
   if('walls3_legendary_hunter' in ap):
     count += 1
-    data += ":gem: Legendary Hunter\n"
+    data += f"{emoji1} Legendary Hunter\n"
   else:
-    data += ":x: Legendary Hunter\n"
+    data += f"{emoji2} Legendary Hunter\n"
 
   if('walls3_legendary_shark' in ap):
     count += 1
-    data += ":gem: Legendary Shark\n"
+    data += f"{emoji1} Legendary Shark\n"
   else:
-    data += ":x: Legendary Shark\n"
+    data += f"{emoji2} Legendary Shark\n"
 
   if('walls3_legendary_dreadlord' in ap):
     count += 1
-    data += ":gem: Legendary Dreadlord\n"
+    data += f"{emoji1} Legendary Dreadlord\n"
   else:
-    data += ":x: Legendary Dreadlord\n"
+    data += f"{emoji2} Legendary Dreadlord\n"
 
   if('walls3_legendary_golem' in ap):
     count += 1
-    data += ":gem: Legendary Golem\n"
+    data += f"{emoji1} Legendary Golem\n"
   else:
-    data += ":x: Legendary Golem\n"
+    data += f"{emoji2} Legendary Golem\n"
 
   if('walls3_legendary_herobrine' in ap):
     count += 1
-    data += ":gem: Legendary Herobrine\n"
+    data += f"{emoji1} Legendary Herobrine\n"
   else:
-    data += ":x: Legendary Herobrine\n"
+    data += f"{emoji2} Legendary Herobrine\n"
 
   if('walls3_legendary_pigman' in ap):
     count += 1
-    data += ":gem: Legendary Pigman\n"
+    data += f"{emoji1} Legendary Pigman\n"
   else:
-    data += ":x: Legendary Pigman\n"
+    data += f"{emoji2} Legendary Pigman\n"
 
   if('walls3_legendary_zombie' in ap):
     count += 1
-    data += ":gem: Legendary Zombie\n"
+    data += f"{emoji1} Legendary Zombie\n"
   else:
-    data += ":x: Legendary Zombie\n"
+    data += f"{emoji2} Legendary Zombie\n"
 
   if('walls3_legendary_arcanist' in ap):
     count += 1
-    data += ":gem: Legendary Arcanist\n"
+    data += f"{emoji1} Legendary Arcanist\n"
   else:
-    data += ":x: Legendary Arcanist\n"
+    data += f"{emoji2} Legendary Arcanist\n"
 
   if('walls3_legendary_shaman' in ap):
     count += 1
-    data += ":gem: Legendary Shaman\n"
+    data += f"{emoji1} Legendary Shaman\n"
   else:
-    data += ":x: Legendary Shaman\n"
+    data += f"{emoji2} Legendary Shaman\n"
 
   if('walls3_legendary_squid' in ap):
     count += 1
-    data += ":gem: Legendary Squid\n"
+    data += f"{emoji1} Legendary Squid\n"
   else:
-    data += ":x: Legendary Squid\n"
+    data += f"{emoji2} Legendary Squid\n"
 
   if('walls3_legendary_enderman' in ap):
     count += 1
-    data += ":gem: Legendary Enderman\n"
+    data += f"{emoji1} Legendary Enderman\n"
   else:
-    data += ":x: Legendary Enderman\n"
+    data += f"{emoji2} Legendary Enderman\n"
 
   data2 = ""
 
   if('walls3_legendary_blaze' in ap):
     count += 1
-    data2 += ":gem: Legendary Blaze\n"
+    data2 += f"{emoji1} Legendary Blaze\n"
   else:
-    data2 += ":x: Legendary Blaze\n"
+    data2 += f"{emoji2} Legendary Blaze\n"
 
   if('walls3_legendary_skeleton' in ap):
     count += 1
-    data2 += ":gem: Legendary Skeleton\n"
+    data2 += f"{emoji1} Legendary Skeleton\n"
   else:
-    data2 += ":x: Legendary Skeleton\n"
+    data2 += f"{emoji2} Legendary Skeleton\n"
 
   if('walls3_legendary_spider' in ap):
     count += 1
-    data2 += ":gem: Legendary Spider\n"
+    data2 += f"{emoji1} Legendary Spider\n"
   else:
-    data2 += ":x: Legendary Spider\n"
+    data2 += f"{emoji2} Legendary Spider\n"
 
   if('walls3_legendary_pirate' in ap):
     count += 1
-    data2 += ":gem: Legendary Pirate\n"
+    data2 += f"{emoji1} Legendary Pirate\n"
   else:
-    data2 += ":x: Legendary Pirate\n"
+    data2 += f"{emoji2} Legendary Pirate\n"
 
   if('walls3_legendary_creeper' in ap):
     count += 1
-    data2 += ":gem: Legendary Creeper\n"
+    data2 += f"{emoji1} Legendary Creeper\n"
   else:
-    data2 += ":x: Legendary Creeper\n"
+    data2 += f"{emoji2} Legendary Creeper\n"
 
   if('walls3_legendary_assassin' in ap):
     count += 1
-    data2 += ":gem: Legendary Assassin\n"
+    data2 += f"{emoji1} Legendary Assassin\n"
   else:
-    data2 += ":x: Legendary Assassin\n"
+    data2 += f"{emoji2} Legendary Assassin\n"
 
 
   if('walls3_legendary_werewolf' in ap):
     count += 1
-    data2 += ":gem: Legendary Werewolf\n"
+    data2 += f"{emoji1} Legendary Werewolf\n"
   else:
-    data2 += ":x: Legendary Werewolf\n"
+    data2 += f"{emoji2} Legendary Werewolf\n"
 
 
   if('walls3_legendary_phoenix' in ap):
     count += 1
-    data2 += ":gem: Legendary Phoenix\n"
+    data2 += f"{emoji1} Legendary Phoenix\n"
   else:
-    data2 += ":x: Legendary Phoenix\n"
+    data2 += f"{emoji2} Legendary Phoenix\n"
 
 
   if('walls3_legendary_automaton' in ap):
     count += 1
-    data2 += ":gem: Legendary Automaton\n"
+    data2 += f"{emoji1} Legendary Automaton\n"
   else:
-    data2 += ":x: Legendary Automaton\n"
+    data2 += f"{emoji2} Legendary Automaton\n"
 
 
   if('walls3_legendary_moleman' in ap):
     count += 1
-    data2 += ":gem: Legendary Moleman\n"
+    data2 += f"{emoji1} Legendary Moleman\n"
   else:
-    data2 += ":x: Legendary Moleman\n"
+    data2 += f"{emoji2} Legendary Moleman\n"
 
 
   if('walls3_legendary_renegade' in ap):
     count += 1
-    data2 += ":gem: Legendary Renegade\n"
+    data2 += f"{emoji1} Legendary Renegade\n"
   else:
-    data2 += ":x: Legendary Renegade\n"
+    data2 += f"{emoji2} Legendary Renegade\n"
 
 
   if('walls3_legendary_snowman' in ap):
     count += 1
-    data2 += ":gem: Legendary Snowman\n"
+    data2 += f"{emoji1} Legendary Snowman\n"
   else:
-    data2 += ":x: Legendary Snowman\n"
+    data2 += f"{emoji2} Legendary Snowman\n"
 
   
   legs = discord.Embed(

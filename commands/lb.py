@@ -9,7 +9,7 @@ from random                 import randint
 
 # So, a command class named Random will generate a 'random' command
 
-class Tourney(BaseCommand):
+class lb(BaseCommand):
 
     def __init__(self):
         # A quick description for the help message
@@ -18,7 +18,7 @@ class Tourney(BaseCommand):
         # Parameters will be separated by spaces and fed to the 'params' 
         # argument in the handle() method
         # If no params are expected, leave this list empty or set it to None
-        params = ["username"]
+        params = []
         super().__init__(description, params)
 
     # Override the handle() method
@@ -31,19 +31,8 @@ class Tourney(BaseCommand):
         # 'client' is the bot Client object
         
         if(checkperm(message.author)):
-          username = params[0]
-          uuid = get_uuid(username)
-          if(uuid == "ERROR"):
-            progress = -2
-          else:
-            progress = get_tourney(uuid)
           
-          if(progress == -2):
-            msg = f" {username} was not found in Mojang API"
-          elif(progress == "ERROR"):
-            msg = "An error occured talking to the API. Please try again later."
-          else:
-            msg = progress
+          msg = progress
 
 
 

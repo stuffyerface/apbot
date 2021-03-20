@@ -8,6 +8,7 @@ from random                 import randint
 # but in lowercase
 
 # So, a command class named Random will generate a 'random' command
+
 class Stats(BaseCommand):
 
     def __init__(self):
@@ -43,6 +44,7 @@ class Stats(BaseCommand):
             msg = "An error occured talking to the API. Please try again later."
           else:
             msg = progress
+
 
 
           await message.channel.send(content= "", embed = progress)

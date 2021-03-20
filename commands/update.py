@@ -31,7 +31,8 @@ class Update(BaseCommand):
         # 'client' is the bot Client object
         perm = False
         member = message.author
-        if(message.channel.id == 818244035277881344):
+        emoji1 = "<:achievement:819360686290370567>"
+        if(message.channel.id == 795177576746319884):
           perm = True
         if(perm):
           username = params[0]
@@ -67,11 +68,12 @@ class Update(BaseCommand):
                 for x in range(len(roles)):
                   role = discord.utils.get(member.guild.roles, name=roles[x])
                   await member.add_roles(role)
+                  await message.channel.send(content = f"Congrats to {member.mention} for earning the {role} role")
               except:
                 print("Insufficient Permissions for role change")
               for x in roles:
-                chan = client.get_channel(818245966317748264)
-                await chan.send(content = f":achievement: Congrats to {member.mention} for earning {x}!")
+                channel = client.get_channel(812553449887629352)
+                await channel.send(content = f"{emoji1} Congrats to {member.mention} for earning the {x} role!")
 
 
               msg = f"Successfully updated {get_Name(username)}"

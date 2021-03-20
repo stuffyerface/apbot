@@ -29,8 +29,8 @@ class Legs(BaseCommand):
         # parameters as specified in __init__
         # 'message' is the discord.py Message object for the command to handle
         # 'client' is the bot Client object
-        perm = True
-        if(perm):
+        
+        if(checkperm(message.author)):
           username = params[0]
           uuid = get_uuid(username)
           if(uuid == "ERROR"):
@@ -48,3 +48,5 @@ class Legs(BaseCommand):
 
 
           await message.channel.send(content= "", embed = progress)
+        else:
+          await message.channel.send(content= "", embed = embeds.emPremium)

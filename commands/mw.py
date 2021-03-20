@@ -28,7 +28,10 @@ class Mw(BaseCommand):
         # parameters as specified in __init__
         # 'message' is the discord.py Message object for the command to handle
         # 'client' is the bot Client object
-        perm = True
+        perm = False
+        for x in message.author.roles:
+          if(str(x) == 'Verified'):
+            perm = True
         if(perm):
           username = params[0]
           uuid = get_uuid(username)

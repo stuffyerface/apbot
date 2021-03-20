@@ -13,7 +13,7 @@ t_walls=[("walls_kills",2500),("walls_wins",500),("walls_coins",75000),("walls_d
 c_paintball=["paintball_no_killstreaks","paintball_unlock_killstreaks","paintball_unlock_hat","paintball_combo","paintball_activate_leeroy_jenkins","paintball_activate_killstreaks","paintball_first_kill","paintball_last_kill","paintball_activate_plus_ten","paintball_hacker","paintball_admin_hat","paintball_endurance","paintball_how_does_it_feel","paintball_god_killer","paintball_trigger_happy","paintball_energy_drink","paintball_thunder_struck","paintball_on_the_brink_of_defeat","paintball_shaky_hands","paintball_undercover_sloth","paintball_cheating_death","paintball_at_least_i_tried","paintball_closure","paintball_warfare_time","paintball_do_i_get_my_nuke_now","paintball_jackson_pollock","paintball_sarcrifice","paintball_sampling","paintball_espionage","paintball_go_home_youre_drunk","paintball_now_you_see_me","paintball_lights_out","paintball_explosive_death","paintball_godfather"]
 t_paintball=[("paintball_wins",2000),("paintball_kills",100000),("paintball_coins",75000),("paintball_invincible",3600),("paintball_kill_streaks",10000),("paintball_hat_collector",21)]
 
-c_arena=["arena_big_brawler","arena_cooldown","arena_deadly_pumpkin","arena_disco_star","arena_dont_touch_me","arena_doom_shroom_gloom","arena_dragon_within","arena_energy","arena_environmentalist","arena_flawless","arena_hard_earned_reward","arena_health","arena_health_totem","arena_iron_heart","arena_magical","arena_max_runic_magic","arena_melee","arena_my_new_hat","arena_new_toy","arena_nice_spare","arena_not_even_close","arena_not_today","arena_offensive","arena_overkill","arena_pairs","arena_pig","arena_pool","arena_power_hungry","arena_punisher","arena_runic","arena_smash","arena_spartacus","arena_spirited_away","arena_support","arena_totem_destroyer","arena_ultimate","arena_utility","arena_you_shall_not_pass"]
+c_arena=["arena_big_brawler","arena_cooldown","arena_deadly_pumpkin","arena_disco_star","arena_dont_touch_me","arena_doom_shroom_gloom","arena_dragon_within","arena_energy","arena_environmentalist","arena_flawless","arena_hard_earned_reward","arena_health","arena_health_totem","arena_iron_heart","arena_magical","arena_Max _runic_magic","arena_melee","arena_my_new_hat","arena_new_toy","arena_nice_spare","arena_not_even_close","arena_not_today","arena_offensive","arena_overkill","arena_pairs","arena_pig","arena_pool","arena_power_hungry","arena_punisher","arena_runic","arena_smash","arena_spartacus","arena_spirited_away","arena_support","arena_totem_destroyer","arena_ultimate","arena_utility","arena_you_shall_not_pass"]
 t_arena=[("arena_bossed",5000),("arena_climb_the_ranks",1300),("arena_gladiator",5000),("arena_gotta_wear_em_all",25),("arena_magical_box",3000),("arena_powerup",1000)]
 
 c_vampz=["vampirez_blood","vampirez_blood_thirsty","vampirez_chest_hunter","vampirez_close_call","vampirez_dont_need_it","vampirez_first_wave_kill","vampirez_gold","vampirez_kill_zombies","vampirez_last_chance","vampirez_nightmare","vampirez_pest","vampirez_potions","vampirez_purchase_armor","vampirez_purchase_blood","vampirez_purchase_food","vampirez_purchase_gold","vampirez_purchase_sword","vampirez_purified","vampirez_robbed","vampirez_sole_survivor","vampirez_survivor_kills_one_round","vampirez_tastes_funny","vampirez_undefeatable","vampirez_upgraded","vampirez_vampire_fang_kill","vampirez_vampire_kills_one_round","vampirez_vampire_shop","vampirez_word_puns","vampirez_zombie_slayer","vampirez_zombie_whisperer"]
@@ -70,7 +70,7 @@ t_pit=[("pit_contracts",500),("pit_events",500),("pit_gold",30000000),("pit_kill
 c_skywars=["skywars_the_angels_journey","skywars_ashes_to_ashes","skywars_attention_seeking","skywars_baller","skywars_challenge_archer","skywars_challenge_half_health","skywars_challenge_master","skywars_challenge_no_block","skywars_challenge_no_chest","skywars_challenge_paper","skywars_challenge_pro","skywars_challenge_rookie","skywars_challenge_uhc","skywars_challenge_ultimate_warrior","skywars_corruption_lord","skywars_criminal","skywars_donator","skywars_enderdragon","skywars_fast_and_furious","skywars_fear_me","skywars_fists_of_fury","skywars_fortunate","skywars_gapple","skywars_going_ham","skywars_gone_fishing","skywars_gotcha","skywars_happy_meal","skywars_hasta_la_vista","skywars_kill_streak","skywars_killstolen","skywars_kit_conoisseur","skywars_legendary","skywars_lucky_charm","skywars_lucky_souls","skywars_map_select","skywars_max_perk","skywars_max_well","skywars_mega_warrior","skywars_mob_spawner","skywars_mystery_mob","skywars_mythical","skywars_nick_cage","skywars_no_chest_challenge","skywars_now_im_enchanted","skywars_open_chest","skywars_peacemaker","skywars_playing_it_safe","skywars_portal_game","skywars_rng","skywars_shiny_stuff","skywars_siege","skywars_slow_steady","skywars_sniper","skywars_solo_warrior","skywars_speed_run","skywars_speed_runner","skywars_teamwork","skywars_teamwork_makes_the_dream_work","skywars_touch_of_death","skywars_trolol","skywars_well_deserved","skywars_well_well","skywars_who_needs_teammates"]
 t_skywars = [("skywars_cages",20),("skywars_heads",1000),("skywars_kills_mega",10000),("skywars_kills_solo",10000),("skywars_kills_team",10000),("skywars_kits_mega",10),("skywars_kits_solo",15),("skywars_kits_team",15),("skywars_new_day_new_challenge",200),("skywars_opal_obsession",10),("skywars_wins_lab",1000),("skywars_wins_mega",500),("skywars_wins_solo",1200),("skywars_wins_team",1200),("skywars_you_re_a_star",15)]
 
-achs=[(c_general,t_general,"Max General"),(c_housing,t_housing,"Max Housing"),(c_arcade,t_arcade,"Max Arcade"),(c_walls,t_walls,"Max Walls"),(c_paintball,t_paintball,"Max Paintball"),(c_quake,t_quake,"Max Quake"),(c_tkr,t_tkr,"Max TKR"),(c_skyblock,t_skyblock,"Max Skyblock"),(c_tnt,t_tnt,"Max TNT Games"),(c_blitz,t_blitz,"Max Blitz"),(c_walls3,t_walls3,"Max Mega Walls"),(c_cvc,t_cvc,"Max Cops and Crims"),(c_uhc,t_uhc,"Max UHC"),(c_warlords,t_warlords,"Max Warlords"),(c_skywars,t_skywars,"Max SkyWars"),(c_smash,t_smash,"Max Smash Heroes"),(c_suhc,t_suhc,"Max Speed UHC"),(c_bedwars,t_bedwars,"Max BedWars"),(c_mm,t_mm,"Max Murder Mystery"),(c_bb,t_bb,"Max Build Battle"),(c_duels,t_duels,"Max Duels"),(c_pit,t_pit,"Max Pit"),(c_vampz,t_vampz,"Max VampireZ"),(c_arena,t_arena,"Max Arena Brawl")]
+achs=[(c_general,t_general,"Max General"),(c_housing,t_housing,"Max Housing"),(c_arcade,t_arcade,"Max Arcade"),(c_walls,t_walls,"Max Walls"),(c_paintball,t_paintball,"Max Paintball"),(c_quake,t_quake,"Max Quake"),(c_tkr,t_tkr,"Max TKR"),(c_skyblock,t_skyblock,"Max Skyblock"),(c_tnt,t_tnt,"Max TNT Games"),(c_blitz,t_blitz,"Max Blitz"),(c_walls3,t_walls3,"Max Mega Walls"),(c_cvc,t_cvc,"Max Cops and Crims"),(c_uhc,t_uhc,"Max UHC"),(c_warlords,t_warlords,"Max Warlords"),(c_skywars,t_skywars,"Max SkyWars"),(c_smash,t_smash,"Max Smash Heroes"),(c_suhc,t_suhc,"Max Speed UHC"),(c_bedwars,t_bedwars,"Max BedWars"),(c_mm,t_mm,"Max Murder Mystery"),(c_bb,t_bb,"Max Build Battle"),(c_duels,t_duels,"Max Duels"),(c_pit,t_pit,"Max Pit"),(c_vampz,t_vampz,"Max VampireZ")]
 
 # MissingGames:
 # Seasonal
@@ -78,3 +78,37 @@ achs=[(c_general,t_general,"Max General"),(c_housing,t_housing,"Max Housing"),(c
 
 c_seasonal=[]
 c_legacy=["arcade_ptb_ride_bat","general_gifting","vampirez_wizard"]
+
+
+aplist = [
+  ["arcade","Arcade"],
+  ["arena","Arena Brawl"],
+  ["bedwars", "BedWars"],
+  ["blitz", "Blitz"],
+  ["buildbattle", "Build Battle"],
+  ["copsandcrims", "Cops and Crims"],
+  ["christmas2017", "Christmas"],
+  ["duels", "Duels"],
+  ["easter", "Easter"],
+  ["general","General"],
+  ["halloween2017", "Halloween"],
+  ["gingerbread", "TKR"],
+  ["housing", "Housing"],
+  ["murdermystery", "Murder Mystery"],
+  ["paintball", "Paintball"],
+  ["pit", "Pit"],
+  ["quake", "Quake"],
+  ["skyblock", "Skyblock"],
+  ["skyclash", "Skyclash"],
+  ["skywars", "SkyWars"],
+  ["speeduhc", "Speed UHC"],
+  ["summer", "Summer"],
+  ["supersmash", "Smash Heroes"],
+  ["tntgames", "TNT Games"],
+  ["truecombat", "Crazy Walls"],
+  ["uhc", "UHC"],
+  ["vampirez", "VampireZ"],
+  ["walls", "Walls"],
+  ["walls3", "Mega Walls"],
+  ["warlords", "Warlords"]
+]
