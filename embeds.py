@@ -40,7 +40,8 @@ excl = [
   ("legs <player>","Mega Walls legendaries progress"),
   ("tourney <player>", "tournament stats"),
   ("status <player>","check a player's online status"),
-  ("wins <player>","accurate hypixel wins counter")
+  ("wins <player>","accurate hypixel wins counter"),
+  ("max <player>", "a list of max games achieved")
 ]
 
 eExclusive = ""
