@@ -32,7 +32,7 @@ class Update(BaseCommand):
         perm = False
         member = message.author
         emoji1 = "<:achievement:819360686290370567>"
-        if(message.channel.id == 795177576746319884):
+        if(message.channel.id == 818244035277881344):
           perm = True
         if(perm):
           username = params[0]
@@ -72,7 +72,7 @@ class Update(BaseCommand):
               except:
                 print("Insufficient Permissions for role change")
               for x in roles:
-                channel = client.get_channel(812553449887629352)
+                channel = client.get_channel(818245966317748264)
                 await channel.send(content = f"{emoji1} Congrats to {member.mention} for earning the {x} role!")
 
 
