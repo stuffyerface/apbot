@@ -29,7 +29,7 @@ class Verify(BaseCommand):
         # parameters as specified in __init__
         # 'message' is the discord.py Message object for the command to handle
         # 'client' is the bot Client object
-        perm = True
+        perm = False
         member = message.author
         if(message.channel.id == 818238693075976243):
           perm = True
