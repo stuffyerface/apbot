@@ -48,131 +48,19 @@ class Wins(BaseCommand):
           wins = 0
           print
           try:
-            wins += profile["player"]["achievements"]["blitz_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["paintball_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["quake_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["tnt_games_bow_spleef_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["tnt_games_tnt_run_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["tnt_games_tnt_wizards_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["vampirez_survivor_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["walls_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["skywars_wins_solo"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["skywars_wins_team"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["warlords_ctf_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["warlords_dom_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["skywars_wins_mega"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["skyclash_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["warlords_tdm_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["tnt_games_tnt_tag_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["tnt_games_pvp_run_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["bedwars_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["blitz_wins_teams"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["walls3_wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["skywars_wins_lab"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["arena_bossed"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["uhc_champion"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["supersmash_smash_winner"]
-          except:
-            pass
-          try:
             wins += profile["player"]["achievements"]["copsandcrims_hero_terrorist"]
           except:
             pass
           try:
-            wins += profile["player"]["achievements"]["arcade_arcade_winner"]
+            wins += profile["player"]["stats"]["HungerGames"]["wins_teams"]
           except:
             pass
           try:
-            wins += profile["player"]["achievements"]["gingerbread_winner"]
+            wins += profile["player"]["stats"]["HungerGames"]["wins_solo_chaos"]
           except:
             pass
           try:
-            wins += profile["player"]["achievements"]["truecombat_team_winner"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["truecombat_solo_winner"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["speeduhc_uhc_master"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["achievements"]["duels_duels_winner"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["BuildBattle"]["wins"]
+            wins += profile["player"]["stats"]["Walls"]["wins"]
           except:
             pass
           try:
@@ -180,10 +68,133 @@ class Wins(BaseCommand):
           except:
             pass
           try:
+            wins += profile["player"]["stats"]["Paintball"]["wins"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["VampireZ"]["human_wins"]
+          except:
+            pass
+          try:
             wins += profile["player"]["stats"]["VampireZ"]["vampire_wins"]
           except:
             pass
-          
+          try:
+            wins += profile["player"]["stats"]["TrueCombat"]["wins"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["achievements"]["arcade_arcade_winner"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["Quake"]["wins_teams"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["Quake"]["wins"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["Walls3"]["wins"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["Bedwars"]["wins_bedwars"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["TNTGames"]["wins_bowspleef"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["TNTGames"]["wins_tntrun"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["TNTGames"]["wins_pvprun"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["TNTGames"]["wins_capture"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["TNTGames"]["wins_tntag"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["Arena"]["wins_1v1"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["Arena"]["wins_2v2"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["Arena"]["wins_4v4"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["SpeedUHC"]["wins"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["UHC"]["wins"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["UHC"]["wins_solo"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["Battleground"]["wins"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["SkyWars"]["wins"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["GingerBread"]["gold_trophy"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["SuperSmash"]["wins_normal"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["SuperSmash"]["wins_teams"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["SuperSmash"]["wins_2v2"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["SkyClash"]["wins"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["BuildBattle"]["wins_solo_normal"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["BuildBattle"]["wins_teams_normal"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["BuildBattle"]["wins_guess_the_build"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["BuildBattle"]["wins_solo_pro"]
+          except:
+            pass
+          try:
+            wins += profile["player"]["stats"]["Duels"]["wins"]
+          except:
+            pass
           
 
           wins = "{:,}".format(wins)
