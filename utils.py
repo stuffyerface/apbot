@@ -13,6 +13,7 @@ import math
 import datetime
 import achList
 import embeds
+import random
 
 
 apres = requests.get("https://api.hypixel.net/resources/achievements")
@@ -41,6 +42,11 @@ def get_emoji(emoji_name, fail_silently=False):
         raise ValueError(f"Emoji {alias} not found!")
 
     return the_emoji
+
+def randomAp():
+  game = random.choice(list(achres["achievements"].keys()))
+  gameap = random.choice(list(achres["achievements"][game]["one_time"].keys()))
+  return (f"{game}_{gameap.lower()}" , achres["achievements"][game]["one_time"][gameap])
 
 async def removeroles(member,roles):
   for x in member.roles:
@@ -1292,12 +1298,40 @@ def get_mwprog(prof,player,kit):
 
     progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
+  #
+  # SHAMAN
+  #
+  elif(kit == "shaman"):
+    progress = discord.Embed(
+      title = f"Shaman skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      much_dogs = "{:,}".format(prof['shaman_c_activations'])
+    except:
+      much_dogs = 0
+
+    try:
+      spring_hero = "{:,}".format(prof['shaman_heroism_triggers_in_dm'])
+    except:
+      spring_hero = 0
+    
+
+    prog = ""
+    prog += f"Much Dogs: {much_dogs}/500\n"
+    prog += f"Spring Hero (seasonal): {spring_hero}/180\n"
+
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+
 
 
   else:
     progress = discord.Embed(
       title = f"Unsupported class '{kit}', try using one of these:",
-      description = "cow, hunter, shark, dreadlord, golem, herobrine, zombie, enderman, blaze, skeleton, spider, creeper, assassin, werewolf, phoenix, moleman, renegade, or snowman\n\n This feature is in beta, some classes are missing but all will be added eventually. Be Patient",
+      description = "cow, hunter, shark, dreadlord, golem, herobrine, zombie, shaman, enderman, blaze, skeleton, spider, creeper, assassin, werewolf, phoenix, moleman, renegade, or snowman\n\n This feature is in beta, some classes are missing but all will be added eventually. Be Patient",
       colour = discord.Colour.red()
     )
   return progress
