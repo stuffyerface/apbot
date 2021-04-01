@@ -15,3 +15,5 @@ BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 # Link to the Stuffy discord
 DISC_LINK = "https://discord.gg/TAf8hvaymD"
+
+RESOURCE_LAST_UPDATED = 0
