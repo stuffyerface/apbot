@@ -47,5 +47,3 @@ class Admin(BaseCommand):
 
 
           await message.channel.send(content= f"{retVal}")
-        else:
-          await message.channel.send(content= "", embed = embeds.emPremium)
