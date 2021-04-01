@@ -43,6 +43,8 @@ def main():
             await client.change_presence(
                 activity=discord.Activity(type=discord.ActivityType.listening, name=settings.NOW_PLAYING))
         print("Logged in!", flush=True)
+        channel = client.get_channel(818611323755036702)
+        await channel.send(content = "Logged in")
 
         # Load all events
         print("Loading events...", flush=True)
