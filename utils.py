@@ -22,7 +22,7 @@ achres = json.loads(apres.text)
 apiKey = os.getenv('APIKEY')
 
 emoji1 = "<:achievement:819360686290370567>"
-emoji2 = "<:fail:819360838291816458>"
+emoji2 = "<:fail:823712673249755176>"
 
 # Returns a path relative to the bot directory
 def get_rel_path(rel_path):
