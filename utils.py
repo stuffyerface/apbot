@@ -674,7 +674,7 @@ def get_pstats(prof,player,uuid):
 
   data = ""
   data += f"Quests Completed: **{quests}**\n"
-  data += f"Total Wins: **{wins}**\n"
+  # data += f"Total Wins: **{wins}**\n"
   data += f"Guild: {gld}\n\n"
   data += f"Reward Streak: **{reward}**\n"
   data += f"Playing on version **{ver}**\n"
