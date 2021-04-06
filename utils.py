@@ -1322,7 +1322,7 @@ def get_mwprog(prof,player,kit):
 
     prog = ""
     prog += f"Much Dogs: {much_dogs}/500\n"
-    prog += f"Spring Hero (seasonal): {spring_hero}/180\n"
+    prog += f"Spring Hero (seasonal): {spring_hero}/100\n"
 
     progress.add_field(name = "2 tracked skins", value = f"{prog}")
 
