@@ -1315,6 +1315,11 @@ def get_mwprog(prof,player,kit):
       much_dogs = 0
 
     try:
+      revenge_of_the_wolves = "{:,}".format(prof['shaman_c_total_final_kills'])
+    except:
+      revenge_of_the_wolves = 0
+
+    try:
       spring_hero = "{:,}".format(prof['shaman_heroism_triggers_in_dm'])
     except:
       spring_hero = 0
@@ -1322,9 +1327,10 @@ def get_mwprog(prof,player,kit):
 
     prog = ""
     prog += f"Much Dogs: {much_dogs}/500\n"
+    prog += f"Revenge of the Wolves: {revenge_of_the_wolves}/5\n"
     prog += f"Spring Hero (seasonal): {spring_hero}/100\n"
 
-    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
 
 
