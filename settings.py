@@ -17,3 +17,4 @@ BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 DISC_LINK = "https://discord.gg/TAf8hvaymD"
 
 RESOURCE_LAST_UPDATED = 0
+OUONLINE = False
