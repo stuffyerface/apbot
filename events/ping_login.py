@@ -21,7 +21,7 @@ class ResourceUpdate(BaseEvent):
     # It will be called once every {interval_minutes} minutes
     
     async def run(self, client):
-        apres = requests.get("https://api.hypixel.net/status?key=84cf2f1e-5328-4ebc-ae60-c0d38cae5394&uuid=fdae93b7-0d12-4091-a997-b817f1a1fd28")
+        apres = requests.get("https://api.hypixel.net/status?key=84cf2f1e-5328-4ebc-ae60-c0d38cae5394&uuid=61e8ad9f-cda4-4bfb-acfe-71c9009e683d")
         achres = json.loads(apres.text)
         if achres["success"] == True:
           lu = achres["session"]["online"]
