@@ -24,6 +24,39 @@ apiKey = os.getenv('APIKEY')
 emoji1 = "<:achievement:819360686290370567>"
 emoji2 = "<:fail:823712673249755176>"
 
+gamesDict = {
+  "speeduhc" : "Speed UHC",
+  "tntgames" : "TNT Games",
+  "general" : "General",
+  "arena" : "Arena Brawl",
+  "copsandcrims" : "Cops and Crims",
+  "paintball" : "Paintball",
+  "uhc" : "UHC",
+  "warlords" : "Warlords",
+  "skyblock" : "Skyblock",
+  "murdermystery" : "Murder Mystery",
+  "duels" : "Duels",
+  "walls" : "Walls",
+  "christmas2017" : "Christmas",
+  "arcade" : "Arcade",
+  "summer" : "Summer",
+  "easter" : "Easter",
+  "halloween2017" : "Halloween",
+  "housing" : "Housing",
+  "quake" : "Quake",
+  "supersmash" : "Smash Heroes",
+  "blitz" : "Blitz",
+  "gingerbread" : "TKR",
+  "buildbattle" : "Build Battle",
+  "skyclash" : "Skyclash",
+  "truecombat" : "Crazy Walls",
+  "walls3" : "Mega Walls",
+  "skywars" : "Skywars",
+  "vampirez" : "VampireZ",
+  "pit" : "Pit",
+  "bedwars" : "Bedwars"
+}
+
 # Returns a path relative to the bot directory
 def get_rel_path(rel_path):
     return join(settings.BASE_DIR, rel_path)
@@ -43,10 +76,45 @@ def get_emoji(emoji_name, fail_silently=False):
 
     return the_emoji
 
+def apFormat(inputAP):
+  try:
+    achName = inputAP[2]['name']
+  except:
+    achName = "Unknown AP"
+  try:
+    try:
+      achGame = gamesDict[inputAP[0]]
+    except:
+      achGame = inputAP[0]
+  except:
+    achGame = "Unknown Game"
+  try:
+    achDesc = inputAP[2]['description']
+  except:
+    achDesc = "Unknown Description"
+  try:
+    achReward = inputAP[2]['points']
+  except:
+    achReward = '?'
+
+
+  apEm = discord.Embed(title = "Random Achievement")
+  apEm.set_thumbnail(url="https://freepngimg.com/thumb/minecraft/11-2-minecraft-diamond-png.png")
+  apEm.add_field(name=f"{achName} [{achGame}]", value=f"{achDesc}", inline=False)
+  apEm.add_field(name="Reward:", value=f"+{achReward} Achievement Points {emoji1}", inline=False)
+  try:
+    if inputAP[2]['legacy'] == True:
+      apEm.add_field(name="LEGACY", value= "\u200b", inline=False)
+  except:
+    pass
+
+  apEm.set_footer(text="AP bot by Stuffy")
+  return apEm
+
 def randomAp():
   game = random.choice(list(achres["achievements"].keys()))
   gameap = random.choice(list(achres["achievements"][game]["one_time"].keys()))
-  return (f"{game}_{gameap.lower()}" , achres["achievements"][game]["one_time"][gameap])
+  return (f"{game}", f"{game}_{gameap.lower()}" , achres["achievements"][game]["one_time"][gameap])
 
 async def removeroles(member,roles):
   for x in member.roles:
