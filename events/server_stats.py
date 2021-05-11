@@ -34,13 +34,13 @@ class ServerStats(BaseEvent):
           uses = keydata1["record"]["totalQueries"]
         else:
           uses = "?"
-        await usesChannel.edit(name=f"{uses} bot uses")
+        await usesChannel.edit(name=f"{"{:,}".format(uses)} bot uses")
 
         try:
           memberCount = membersChannel.guild.member_count
         except:
           memberCount = "?"
 
-        await membersChannel.edit(name=f"{memberCount} Discord Members")
+        await membersChannel.edit(name=f"{"{:,}".format(memberCount)} Discord Members")
 
         print("Updated Server Stats")
