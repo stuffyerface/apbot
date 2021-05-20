@@ -17,4 +17,12 @@ BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 DISC_LINK = "https://discord.gg/TAf8hvaymD"
 
 RESOURCE_LAST_UPDATED = 0
+LOGGED_IN = 0
 OUONLINE = False
+TRIVIAACTIVE = False
+BETALIST = [
+  "Stuffy#1359",
+  "anrie#1387",
+  "Gus#1101",
+  "fynn#1517"
+]
