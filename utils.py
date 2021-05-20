@@ -54,7 +54,8 @@ gamesDict = {
   "skywars" : "Skywars",
   "vampirez" : "VampireZ",
   "pit" : "Pit",
-  "bedwars" : "Bedwars"
+  "bedwars" : "Bedwars",
+  "guess" : "||Game?||"
 }
 
 # Returns a path relative to the bot directory
@@ -76,7 +77,105 @@ def get_emoji(emoji_name, fail_silently=False):
 
     return the_emoji
 
-def apFormat(inputAP):
+gamesAlias = {
+  "suhc" : "speeduhc",
+  "speeduhc" : "speeduhc",
+  "tnt" : "tntgames",
+  "tntgames" : "tntgames",
+  "tntag" : "tntgames",
+  "gen" : "general",
+  "general" : "general",
+  "ab" : "arena",
+  "arena" : "arena",
+  "arenabrawl" : "arena",
+  "cvc" : "copsandcrims",
+  "paintball" : "paintball",
+  "pb" : "paintball",
+  "paint" : "paintball",
+  "uhc" : "uhc",
+  "warlords" : "warlords",
+  "wl" : "warlords",
+  "sb" : "skyblock",
+  "skyblock" : "skyblock",
+  "mm" : "murdermystery",
+  "murdermystery" : "murdermystery",
+  "murder" : "murdermystery",
+  "duels" : "duels",
+  "walls" : "walls",
+  "xmas" : "christmas2017",
+  "christmas" : "christmas2017",
+  "christmas2017" : "christmas2017",
+  "arcade" : "arcade",
+  "summer" : "summer",
+  "easter" : "easter",
+  "halloween2017" : "halloween2017",
+  "halloween" : "halloween2017",
+  "housing" : "housing",
+  "home" : "housing",
+  "house" : "housing",
+  "quake" : "quake",
+  "qc" : "quake",
+  "quakecraft" : "quake",
+  "sh" : "supersmash",
+  "supersmash" : "supersmash",
+  "smash" : "supersmash",
+  "smashheroes" : "supersmash",
+  "blitz" : "blitz",
+  "bsg" : "blitz",
+  "sg" : "blitz",
+  "blitzsg" : "blitz",
+  "blitzsurvivalgames" : "blitz",
+  "tkr" : "gingerbread",
+  "turbokartracers" : "gingerbread",
+  "gingerbread" : "gingerbread",
+  "bb" : "buildbattle",
+  "buildbattle" : "buildbattle",
+  "build" : "buildbattle",
+  "sc" : "skyclash",
+  "skyclash" : "skyclash",
+  "cw" : "truecombat",
+  "crazywalls" : "truecombat",
+  "truecombat" : "truecombat",
+  "walls3" : "walls3",
+  "mw" : "walls3",
+  "megawalls" : "walls3",
+  "sw" : "skywars",
+  "skywars" : "skywars",
+  "vamp" : "vampirez",
+  "vampz" : "vampirez",
+  "vampirez" : "vampirez",
+  "pit" : "pit",
+  "thepit" : "pit",
+  "bedwars" : "bedwars",
+  "bw" : "bedwars",
+  "bed" : "bedwars"
+}
+
+ExcludedChars = [
+  " ", "+", "/", "-", "%", "#", "*", "_", "?", "!", "(", ")", ",", "'", ":", ";"
+]
+def shortAns(inputStr, num):
+  shortened = inputStr.lower()
+  for x in ExcludedChars:
+    shortened = shortened.replace(x,"")
+  if(num == 1):
+    shortened = convertToAlias(shortened)
+  print(f"{inputStr} -> {shortened}")
+  return shortened
+
+def longAns(inputStr):
+  try:
+    return gamesDict[inputStr]
+  except:
+    return "Error"
+
+def convertToAlias(inputStr):
+  alias = inputStr
+  if inputStr in gamesAlias:
+    alias = gamesAlias[inputStr]
+  return alias
+
+def apFormat(inputAP, title):
   try:
     achName = inputAP[2]['name']
   except:
@@ -96,17 +195,29 @@ def apFormat(inputAP):
     achReward = inputAP[2]['points']
   except:
     achReward = '?'
-
-
-  apEm = discord.Embed(title = "Random Achievement")
+  try:
+    achUnlocked = "Unlocked by " + str(round(inputAP[2]["gamePercentUnlocked"],2)) + "% of players"
+  except:
+    achUnlocked = "\u200b"
+  
+  apEm = discord.Embed(title = f"{title}")
   apEm.set_thumbnail(url="https://freepngimg.com/thumb/minecraft/11-2-minecraft-diamond-png.png")
   apEm.add_field(name=f"{achName} [{achGame}]", value=f"{achDesc}", inline=False)
   apEm.add_field(name="Reward:", value=f"+{achReward} Achievement Points {emoji1}", inline=False)
   try:
     if inputAP[2]['legacy'] == True:
-      apEm.add_field(name="LEGACY", value= "\u200b", inline=False)
+      apLegacy = True
   except:
+    apLegacy = False
+  if(apLegacy):
+    temp = "LEGACY"
+  else:
+    temp = "\u200b"
+  
+  if(apLegacy == False and achUnlocked == "\u200b"):
     pass
+  else:
+    apEm.add_field(name = f"{temp}", value = f"{achUnlocked}", inline = False)
 
   apEm.set_footer(text="AP bot by Stuffy")
   return apEm
@@ -139,6 +250,12 @@ def checkperm(member):
     if 795115422185816076 == x.id or 818283784763473952 == x.id or str(member) == "Stuffy#1359":
       return True
   return False
+
+def checkbeta(member):
+  if str(member) in settings.BETALIST:
+    return True
+  return False
+
 
 def get_profile(uuid):
   response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
