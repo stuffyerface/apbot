@@ -38,7 +38,7 @@ class Trivia(BaseCommand):
         # 'message' is the discord.py Message object for the command to handle
         # 'client' is the bot Client object
         
-        if(checkperm(message.author)):
+        if(checkbeta(message.channel.id)):
           if(settings.TRIVIAACTIVE == True):
             await message.channel.send("You must wait, there is already an active trivia game.")
           else:
@@ -56,7 +56,9 @@ class Trivia(BaseCommand):
             print(f"Correct Answer: {answer}")
             
             progress = apFormat(progress,triviadict[question][0])
-
+            if(settings.TRIVIAACTIVE == True):
+              await message.channel.send("You must wait, there is already an active trivia game.")
+              return
             await message.channel.send(content = "", embed=progress)
             settings.TRIVIAACTIVE = True
             
@@ -65,7 +67,6 @@ class Trivia(BaseCommand):
             if(question == 1):
               answer = longAns(answer)
             def check(m):
-              print(f"{m.author}: {m.content}")
               if m.channel != message.channel:
                 return False
               elif(shortAns(str(m.content),question) == ans):
