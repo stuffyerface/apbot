@@ -32,7 +32,7 @@ class Random(BaseCommand):
         
         if(checkperm(message.author)):
           progress = randomAp()
-          progress = apFormat(progress)
+          progress = apFormat(progress, "Random Achievement")
 
 
 
