@@ -141,6 +141,7 @@ gamesAlias = {
   "megawalls" : "walls3",
   "sw" : "skywars",
   "skywars" : "skywars",
+  "vz" : "vampirez",
   "vamp" : "vampirez",
   "vampz" : "vampirez",
   "vampirez" : "vampirez",
@@ -152,7 +153,7 @@ gamesAlias = {
 }
 
 ExcludedChars = [
-  " ", "+", "/", "-", "%", "#", "*", "_", "?", "!", "(", ")", ",", "'", ":", ";"
+  "2017","2018","2019","2020","2021","2022", " ", "+", "/", "-", "%", "#", "*", "_", "?", "!", "(", ")", ",", "'", ":", ";", ".", "&"
 ]
 def shortAns(inputStr, num):
   shortened = inputStr.lower()
@@ -160,7 +161,6 @@ def shortAns(inputStr, num):
     shortened = shortened.replace(x,"")
   if(num == 1):
     shortened = convertToAlias(shortened)
-  print(f"{inputStr} -> {shortened}")
   return shortened
 
 def longAns(inputStr):
@@ -223,9 +223,9 @@ def apFormat(inputAP, title):
   return apEm
 
 def randomAp():
-  game = random.choice(list(achres["achievements"].keys()))
-  gameap = random.choice(list(achres["achievements"][game]["one_time"].keys()))
-  return (f"{game}", f"{game}_{gameap.lower()}" , achres["achievements"][game]["one_time"][gameap])
+  game = random.choice(list(achres["achievements"].keys()).copy())
+  gameap = random.choice(list(achres["achievements"][game]["one_time"].keys()).copy())
+  return (f"{game}", f"{game}_{gameap.lower()}" , achres["achievements"][game]["one_time"][gameap].copy())
 
 async def removeroles(member,roles):
   for x in member.roles:
@@ -251,8 +251,8 @@ def checkperm(member):
       return True
   return False
 
-def checkbeta(member):
-  if str(member) in settings.BETALIST:
+def checkbeta(channel):
+  if(channel == 844821632781516830):
     return True
   return False
 
