@@ -251,6 +251,15 @@ def checkperm(member):
       return True
   return False
 
+def checkspecial(member,channel):
+  #Checks if the person is verified and in stuffy disc, or if they are staff in ap disc in certain channels
+  for x in member.roles:
+    if 795115422185816076 == x.id or 818283784763473952 == x.id or str(member) == "Stuffy#1359":
+      return True
+    if 717220615861567508 == x.id:
+      return True
+  return False
+
 def checkbeta(channel):
   if(channel == 844821632781516830):
     return True
@@ -823,9 +832,8 @@ def get_date(firstLogin):
   return new
 
 def get_pstats(prof,player,uuid):
-  
-  get_date(prof["firstLogin"])
-
+  temp = requests.get(f"https://api.slothpixel.me/api/players/{uuid}")
+  json_data = json.loads(temp.text)
 
   try:
     ap = "{:,}".format(prof["achievementPoints"])
@@ -852,7 +860,7 @@ def get_pstats(prof,player,uuid):
   except:
     quests = 0
   try:
-    firstLogin = get_date(prof["firstLogin"])
+    firstLogin = get_date(json_data["first_login"])
   except:
     firstLogin = "Unknown"
   gld = guild(uuid)
