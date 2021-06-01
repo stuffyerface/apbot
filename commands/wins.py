@@ -30,7 +30,7 @@ class Wins(BaseCommand):
         # 'message' is the discord.py Message object for the command to handle
         # 'client' is the bot Client object
         
-        if(checkperm(message.author)):
+        if(checkspecial(message.author,message.channel)):
           username = params[0]
           uuid = get_uuid(username)
           if(uuid == "ERROR"):
