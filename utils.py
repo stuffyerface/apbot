@@ -105,6 +105,7 @@ gamesAlias = {
   "xmas" : "christmas2017",
   "christmas" : "christmas2017",
   "christmas2017" : "christmas2017",
+  "holiday" : "christmas2017", 
   "arcade" : "arcade",
   "summer" : "summer",
   "easter" : "easter",
