@@ -14,7 +14,7 @@ import settings
 class ResourceUpdate(BaseEvent):
 
     def __init__(self):
-        interval_minutes = .5  # Set the interval for this event
+        interval_minutes = 15  # Set the interval for this event
         super().__init__(interval_minutes)
 
     # Override the run() method
