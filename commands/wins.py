@@ -46,157 +46,193 @@ class Wins(BaseCommand):
             msg = profile
           
           wins = 0
-          print
+          debug = False
           try:
-            wins += profile["player"]["achievements"]["copsandcrims_hero_terrorist"]
+            w_cvc = profile["player"]["achievements"]["copsandcrims_hero_terrorist"]
+          except:
+            w_cvc = 0
+          try:
+            w_bsg = profile["player"]["stats"]["HungerGames"]["wins_teams"]
+          except:
+            w_bsg = 0
+          try:
+            w_bsg2 = profile["player"]["stats"]["HungerGames"]["wins_solo_chaos"]
+          except:
+            w_bsg2 = 0
+          try:
+            w_bsg += profile["player"]["stats"]["HungerGames"]["wins"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["HungerGames"]["wins_teams"]
+            w_walls = profile["player"]["stats"]["Walls"]["wins"]
+          except:
+            w_walls = 0
+          try:
+            w_mm = profile["player"]["stats"]["MurderMystery"]["wins"]
+          except:
+            w_mm = 0
+          try:
+            w_pb = profile["player"]["stats"]["Paintball"]["wins"]
+          except:
+            w_pb = 0
+          try:
+            w_vz = profile["player"]["stats"]["VampireZ"]["human_wins"]
+          except:
+            w_vz = 0
+          try:
+            w_vz += profile["player"]["stats"]["VampireZ"]["vampire_wins"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["HungerGames"]["wins_solo_chaos"]
+            w_cw = profile["player"]["stats"]["TrueCombat"]["wins"]
+          except:
+            w_cw = 0
+          try:
+            w_arcade = profile["player"]["achievements"]["arcade_arcade_winner"]
+          except:
+            w_arcade = 0
+          try:
+            w_quake = profile["player"]["stats"]["Quake"]["wins_teams"]
+          except:
+            w_quake = 0
+          try:
+            w_quake += profile["player"]["stats"]["Quake"]["wins"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["Walls"]["wins"]
+            w_mw = profile["player"]["stats"]["Walls3"]["wins"]
+          except:
+            w_mw = 0
+          try:
+            w_bw = profile["player"]["stats"]["Bedwars"]["wins_bedwars"]
+          except:
+            w_bw = 0
+          try:
+            w_tnt = profile["player"]["stats"]["TNTGames"]["wins_bowspleef"]
+          except:
+            w_tnt = 0
+          try:
+            w_tnt += profile["player"]["stats"]["TNTGames"]["wins_tntrun"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["MurderMystery"]["wins"]
+            w_tnt += profile["player"]["stats"]["TNTGames"]["wins_pvprun"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["Paintball"]["wins"]
+            w_tnt += profile["player"]["stats"]["TNTGames"]["wins_capture"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["VampireZ"]["human_wins"]
+            w_tnt += profile["player"]["stats"]["TNTGames"]["wins_tntag"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["VampireZ"]["vampire_wins"]
+            w_ab = profile["player"]["stats"]["Arena"]["wins_1v1"]
+          except:
+            w_ab = 0
+          try:
+            w_ab += profile["player"]["stats"]["Arena"]["wins_2v2"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["TrueCombat"]["wins"]
+            w_ab += profile["player"]["stats"]["Arena"]["wins_4v4"]
           except:
             pass
           try:
-            wins += profile["player"]["achievements"]["arcade_arcade_winner"]
+            w_suhc = profile["player"]["stats"]["SpeedUHC"]["wins"]
+          except:
+            w_suhc = 0
+          try:
+            w_uhc = profile["player"]["stats"]["UHC"]["wins"]
+          except:
+            w_uhc = 0
+          try:
+            w_uhc += profile["player"]["stats"]["UHC"]["wins_solo"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["Quake"]["wins_teams"]
+            w_uhc += profile["player"]["stats"]["UHC"]["wins_red vs blue"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["Quake"]["wins"]
+            w_uhc += profile["player"]["stats"]["UHC"]["wins_no diamonds"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["Walls3"]["wins"]
+            w_uhc += profile["player"]["stats"]["UHC"]["wins_vanilla doubles"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["Bedwars"]["wins_bedwars"]
+            w_uhc += profile["player"]["stats"]["UHC"]["wins_brawl"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["TNTGames"]["wins_bowspleef"]
+            w_uhc += profile["player"]["stats"]["UHC"]["wins_solo_brawl"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["TNTGames"]["wins_tntrun"]
+            w_uhc += profile["player"]["stats"]["UHC"]["wins_duo brawl"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["TNTGames"]["wins_pvprun"]
+            w_wl = profile["player"]["stats"]["Battleground"]["wins"]
+          except:
+            w_wl = 0
+          try:
+            w_sw = profile["player"]["stats"]["SkyWars"]["wins"]
+          except:
+            w_sw = 0
+          try:
+            w_tkr = profile["player"]["stats"]["GingerBread"]["gold_trophy"]
+          except:
+            w_tkr = 0
+          try:
+            w_sh = profile["player"]["stats"]["SuperSmash"]["wins_normal"]
+          except:
+            w_sh = 0
+          try:
+            w_sh += profile["player"]["stats"]["SuperSmash"]["wins_teams"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["TNTGames"]["wins_capture"]
+            w_sh += profile["player"]["stats"]["SuperSmash"]["wins_2v2"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["TNTGames"]["wins_tntag"]
+            w_sc = profile["player"]["stats"]["SkyClash"]["wins"]
+          except:
+            w_sc = 0
+          try:
+            w_bb = profile["player"]["stats"]["BuildBattle"]["wins_solo_normal"]
+          except:
+            w_bb = 0
+          try:
+            w_bb += profile["player"]["stats"]["BuildBattle"]["wins_teams_normal"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["Arena"]["wins_1v1"]
+            w_bb += profile["player"]["stats"]["BuildBattle"]["wins_guess_the_build"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["Arena"]["wins_2v2"]
+            w_bb += profile["player"]["stats"]["BuildBattle"]["wins_solo_pro"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["Arena"]["wins_4v4"]
+            w_bb += profile["player"]["stats"]["BuildBattle"]["wins_halloween"]
           except:
             pass
           try:
-            wins += profile["player"]["stats"]["SpeedUHC"]["wins"]
+            w_d = profile["player"]["stats"]["Duels"]["wins"]
           except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["UHC"]["wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["UHC"]["wins_solo"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["Battleground"]["wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["SkyWars"]["wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["GingerBread"]["gold_trophy"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["SuperSmash"]["wins_normal"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["SuperSmash"]["wins_teams"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["SuperSmash"]["wins_2v2"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["SkyClash"]["wins"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["BuildBattle"]["wins_solo_normal"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["BuildBattle"]["wins_teams_normal"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["BuildBattle"]["wins_guess_the_build"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["BuildBattle"]["wins_solo_pro"]
-          except:
-            pass
-          try:
-            wins += profile["player"]["stats"]["Duels"]["wins"]
-          except:
-            pass
+            w_d = 0
           
-
+          print(wins)
+          wins = w_arcade + w_ab + w_bw + w_bsg + w_bsg2 + w_bb + w_cvc + w_cw + w_d + w_mw + w_mm + w_pb + w_quake + w_sc + w_sw + w_sh + w_suhc + w_tnt + w_tkr + w_uhc + w_vz + w_walls + w_wl
+          wins = math.trunc(wins)
+          if(debug):
+            print(f" Arcade: {w_arcade} Arena: {w_ab} Bedwars: {w_bw}\n Blitz: {w_bsg + w_bsg2} Build Battle: {w_bb} CvC: {w_cvc} \n Crazy Walls: {w_cw} Duels: {w_d} Mega Walls: {w_mw}\n Murder Mystery: {w_mm} Paintball: {w_pb} Quake: {w_quake}\n Skyclash: {w_sc} Skywars: {w_sw} Smash Heroes: {w_sh}\n Speed UHC: {w_suhc} Tnt Games: {w_tnt} TKR: {w_tkr}\n UHC: {w_uhc} VampireZ: {w_vz} Walls: {w_walls}\n Warlords: {w_wl}")
           wins = "{:,}".format(wins)
           embed = discord.Embed(
             title = f"{get_Name(username)} has {wins} total hypixel wins.",
