@@ -62,6 +62,10 @@ gamesDict = {
 def get_rel_path(rel_path):
     return join(settings.BASE_DIR, rel_path)
 
+def add_to_config(cfgID, item):
+  print(cfgID)
+  print(item)
+  return True
 
 # Returns an emoji as required to send it in a message
 # You can pass the emoji name with or without colons
@@ -261,6 +265,12 @@ def checkspecial(member,channel):
       return True
   return False
 
+def checkelite(member):
+  for x in member.roles:
+    if 841516808976465960 == x.id:
+      return True
+  return False
+
 def checkbeta(channel):
   if(channel == 844821632781516830):
     return True
@@ -395,40 +405,40 @@ def get_tourney(uuid):
     return "ERROR"
   else:
     tourney = discord.Embed(
-      title = f"Active Tournament: CVC Defusal #2",
+      title = f"Active Tournament: Tnt Run #1",
       colour = discord.Colour.orange()
     )
 
     tourney.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
 
-    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/CVC-64.png")
+    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/TNT-64.png")
 
     player = json_data['player']['displayname']
     try:
-      new = json_data['player']['tourney']['mcgo_defusal_1']
+      new = json_data['player']['tourney']['tnt_tntrun_1']
     except:
       new = []
-
+    '''
     try:
       tkills = json_data['player']['stats']['MCGO']['kills_tourney_mcgo_defusal_1']
     except:
       tkills = 0
-
+    '''
     try:
-      tdeaths = json_data['player']['stats']['MCGO']['deaths_tourney_mcgo_defusal_1']
+      tdeaths = json_data['player']['stats']['TNT']['deaths_tourney_tnt_tntrun_1']
     except:
       tdeaths = 0
 
     try:
-      twins = json_data['player']['stats']['MCGO']['game_wins_tourney_mcgo_defusal_1']
+      twins = json_data['player']['stats']['MCGO']['game_wins_tourney_tnt_tntrun_1']
     except:
       twins = 0
-
+    '''
     try:
       trwins = json_data['player']['stats']['MCGO']['round_wins_tourney_mcgo_defusal_1']
     except:
       trwins = 0
-
+    '''
     try:
       games = new['games_played']
     except:
@@ -444,11 +454,10 @@ def get_tourney(uuid):
     except:
       minplayed = 0
 
-    val = f"{player} has played **{games}/40** games so far\n"
+    val = f"{player} has played **{games}/120** games so far\n"
     val += f"with **{tributes}/100** tributes earned\n"
     val += f"and **{minplayed}** minutes played!\n\n"
-    val += f"Kills: {tkills}, Deaths: {tdeaths}\n"
-    val += f"Round Wins: {trwins}, Wins: {twins}\n"
+    val += f"Wins: {twins}, Deaths: {tdeaths}\n"
 
     tourney.add_field(
       name = f"\u200b",
