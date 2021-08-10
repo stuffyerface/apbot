@@ -1133,7 +1133,7 @@ def get_mwprog(prof,player,kit):
     
 
     prog = ""
-    prog += f"Timer!: {timber}/5,000\n"
+    prog += f"Timber!: {timber}/5,000\n"
 
     progress.add_field(name = "1 tracked skin", value = f"{prog}")
 
@@ -1188,6 +1188,34 @@ def get_mwprog(prof,player,kit):
     prog += f"Sleepytime: {sleepytime}/50\n"
 
     progress.add_field(name = "1 tracked skin", value = f"{prog}")
+
+    
+  #
+  # ARCANIST
+  #
+
+  elif(kit == "arcanist"):
+    progress = discord.Embed(
+      title = f"Arcanist skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      potions_of_death = "{:,}".format(prof['arcanist_c_total_final_kills'])
+    except:
+      potions_of_death = 0
+    try:
+      hard_as_steel = "{:,}".format(prof['arcanist_a_blocks_broken'])
+    except:
+      hard_as_steel = 0
+
+    prog = ""
+    prog += f"Potions of death: {potions_of_death}/8\n"
+    prog += f"Hard as Steel: {hard_as_steel}/5,000\n"
+
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
 
   
   #
@@ -1409,6 +1437,30 @@ def get_mwprog(prof,player,kit):
 
 
   #
+  # AUTOMATON
+  #
+  elif(kit == "automaton"):
+    progress = discord.Embed(
+      title = f"Automaton skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      terminated_script = "{:,}".format(prof['automaton_energy_syphoned'])
+    except:
+      terminated_script = 0
+    
+
+    prog = ""
+    prog += f"Terminated Script: {terminated_script}/3,000\n"
+
+    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+
+
+
+  #
   # MOLEMAN
   #
 
@@ -1534,13 +1586,38 @@ def get_mwprog(prof,player,kit):
     prog += f"Spring Hero (seasonal): {spring_hero}/100\n"
 
     progress.add_field(name = "3 tracked skins", value = f"{prog}")
+  #
+  # SQUID
+  #
+  elif(kit == "squid"):
+    progress = discord.Embed(
+      title = f"Squid skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      you_shall_not_pass = "{:,}".format(prof['squid_defender_final_kills'] + prof['squid_defender_final_assists'])
+    except:
+      you_shall_not_pass = 0
+
+    try:
+      trust_me_im = "{:,}".format(prof['squid_a_amount_healed'])
+    except:
+      trust_me_im = 0
+
+    prog = ""
+    prog += f"You shall not pass: {you_shall_not_pass}/10\n"
+    prog += f"Trust me I'm a doctor: {trust_me_im}/2,500\n"
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
 
 
 
   else:
     progress = discord.Embed(
       title = f"Unsupported class '{kit}', try using one of these:",
-      description = "cow, hunter, shark, dreadlord, golem, herobrine, zombie, shaman, enderman, blaze, skeleton, spider, creeper, assassin, werewolf, phoenix, moleman, renegade, or snowman\n\n This feature is in beta, some classes are missing but all will be added eventually. Be Patient",
+      description = "cow, hunter, shark, dreadlord, golem, herobrine, zombie, arcanist, shaman, squid, enderman, blaze, skeleton, spider, creeper, assassin, werewolf, phoenix, automaton, moleman, renegade, or snowman\n\n This feature is in beta, some classes are missing but all will be added eventually. Be Patient",
       colour = discord.Colour.red()
     )
   return progress
