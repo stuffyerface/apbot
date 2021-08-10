@@ -1586,6 +1586,59 @@ def get_mwprog(prof,player,kit):
     prog += f"Spring Hero (seasonal): {spring_hero}/100\n"
 
     progress.add_field(name = "3 tracked skins", value = f"{prog}")
+  
+  #
+  # PIGMAN
+  #
+  elif(kit == "pigman"):
+    progress = discord.Embed(
+      title = f"Pigman skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      collector = "{:,}".format(prof['shaman_c_activations'])
+    except:
+      collector = 0
+
+    
+
+    prog = ""
+    prog += f"Collector: {collector}/500\n"
+
+    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+      
+  #
+  # PIRATE
+  #
+  elif(kit == "pirate"):
+    progress = discord.Embed(
+      title = f"Pirate skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      grave_robber = "{:,}".format(prof['pirate_g_activations'])
+    except:
+      grave_robber = 0
+
+    try:
+      death_from_above = "{:,}".format(prof['pirate_b_total_final_kills'])
+    except:
+      death_from_above = 0
+
+    
+
+    prog = ""
+    prog += f"Grave Robber: {grave_robber}/100\n"
+    prog += f"Death from Above: {death_from_above}/12\n"
+
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+    
   #
   # SQUID
   #
@@ -1598,9 +1651,14 @@ def get_mwprog(prof,player,kit):
     progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
 
     try:
-      you_shall_not_pass = "{:,}".format(prof['squid_defender_final_kills'] + prof['squid_defender_final_assists'])
+      ysnp1 = prof['squid_defender_final_kills']
     except:
-      you_shall_not_pass = 0
+      ysnp1 = 0
+    try:
+      ysnp2 = prof['squid_defender_final_assists']
+    except:
+      ysnp2 = 0
+    you_shall_not_pass = "{:,}".format(ysnp1 + ysnp2)
 
     try:
       trust_me_im = "{:,}".format(prof['squid_a_amount_healed'])
@@ -1617,7 +1675,7 @@ def get_mwprog(prof,player,kit):
   else:
     progress = discord.Embed(
       title = f"Unsupported class '{kit}', try using one of these:",
-      description = "cow, hunter, shark, dreadlord, golem, herobrine, zombie, arcanist, shaman, squid, enderman, blaze, skeleton, spider, creeper, assassin, werewolf, phoenix, automaton, moleman, renegade, or snowman\n\n This feature is in beta, some classes are missing but all will be added eventually. Be Patient",
+      description = "cow, hunter, shark, dreadlord, golem, herobrine, zombie, arcanist, shaman, squid, enderman, blaze, skeleton, spider, creeper, assassin, werewolf, phoenix, automaton, moleman, renegade, pigman, pirate, or snowman",
       colour = discord.Colour.red()
     )
   return progress
