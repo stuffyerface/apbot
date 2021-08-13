@@ -415,7 +415,7 @@ def get_tourney(uuid):
 
     player = json_data['player']['displayname']
     try:
-      new = json_data['player']['tourney']['tnt_tntrun_1']
+      new = json_data['player']['tourney']['tnt_run_0']
     except:
       new = []
     '''
@@ -425,12 +425,12 @@ def get_tourney(uuid):
       tkills = 0
     '''
     try:
-      tdeaths = json_data['player']['stats']['TNT']['deaths_tourney_tnt_tntrun_1']
+      tdeaths = json_data['player']['stats']['TNTGames']['deaths_tourney_tnt_run_0']
     except:
       tdeaths = 0
 
     try:
-      twins = json_data['player']['stats']['MCGO']['game_wins_tourney_tnt_tntrun_1']
+      twins = json_data['player']['stats']['TNTGames']['wins_tourney_tnt_run_0']
     except:
       twins = 0
     '''
