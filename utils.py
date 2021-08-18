@@ -543,6 +543,57 @@ def get_tnt(uuid):
 
     return tnt
     
+def get_tkr(uuid):
+  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  json_data = json.loads(response.text)
+  if(json_data['success'] == 'false'):
+    return "ERROR"
+  else:
+    
+    player = json_data['player']['displayname']
+    tkr = discord.Embed(
+      title = f"TKR Unique Golds for {player}",
+      colour = discord.Colour.blue()
+    )
+
+    tkr.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+
+    tkr.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/TKR-64.png")
+
+    try:
+      new = json_data['player']['stats']['GingerBread']
+    except:
+      new = []
+
+    tkrTracks = [
+      ('gold_trophy_canyon', 'Canyon'),
+      ('gold_trophy_hypixelgp', 'Hypixel GP'),
+      ('gold_trophy_olympus', 'Olympus'),
+      ('gold_trophy_retro', 'Retro'),
+      ('gold_trophy_junglerush', 'Jungle Rush')
+    ]
+    val = ""
+    tkrComplete = 0
+    tkrTotal = 0
+    for track in tkrTracks:
+      tkrTotal += 1
+      activeEmoji = emoji2
+      try:
+        if(new[track[0]] >= 1):
+          activeEmoji = emoji1
+          tkrComplete += 1
+      except:
+        pass
+      val += f"{activeEmoji} {track[1]}\n"
+    
+
+    tkr.add_field(
+      name = f"{tkrComplete}/{tkrTotal}",
+      value = f"{val}"
+    )
+
+    return tkr
+    
 
 def get_quests(prof):
   q = 0
