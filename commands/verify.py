@@ -66,7 +66,7 @@ class Verify(BaseCommand):
 
               msg = f"Successfully verified {get_Name(username)}"
             else:
-              msg = "The username you entered is not linked to your discord account"
+              msg = f"The username you entered is not linked to your discord account\nYour ID: {str(member)}\nLinked ID: {progress}"
 
 
 
