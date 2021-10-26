@@ -41,7 +41,7 @@ class Update(BaseCommand):
             progress = -2
           else:
             progress = get_discord(uuid)
-          aproles = ["0K AP","1K AP","2K AP","3K AP","4K AP","5K AP","6K AP","7K AP","8K AP","9K AP","10K AP","11K AP","12K AP","13K AP","14K AP","15K AP","16K AP","17K AP","18K AP","19K AP","20K AP","21K AP","22K AP","23K AP","24K AP","25K AP"]
+          aproles = ["0K AP","1K AP","2K AP","3K AP","4K AP","5K AP","6K AP","7K AP","8K AP","9K AP","10K AP","11K AP","12K AP","13K AP","14K AP","15K AP","16K AP","17K AP","18K AP","19K AP","20K AP","21K AP","22K AP","23K AP","24K AP","25K AP","26K AP","27K AP","28K AP","29K AP","30K AP","31K AP"]
           lvlroles = ["Lvl 100+", "Level 150+", "Level 200+", "Level 250+", "Level 300+", "Level 400+", "Level 500+"]
           if(progress == -2):
             msg = f"{username} was not found in Mojang API"
