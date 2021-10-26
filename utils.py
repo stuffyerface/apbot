@@ -338,7 +338,7 @@ def get_roles(username):
   except:
     ap = 0
 
-  ap = math.floor(ap/1000)
+  ap = math.floor((ap+1)/1000)
   roles += [f'{ap}K AP']
   lvl = hpLvl(json_data['player']['networkExp'])
   lv = 0
