@@ -867,6 +867,199 @@ def get_legs(uuid):
   else:
     return legs(json_data)
 
+def bwc(profile):
+  try:
+    chal = profile['player']['stats']['Bedwars']
+  except:
+    return "ERROR"
+  player = profile['player']['displayname']
+  data1 = ""
+  data2 = "\u200b"
+  try:
+    if(chal['bw_challenge_no_team_upgrades'] >= 1):
+      data1 += f"{emoji1} Renegade\n"
+  except:
+    data1 += f"{emoji2} Renegade\n"
+  try:
+    if(chal['bw_challenge_no_utilities'] >= 1):
+      data1 += f"{emoji1} Warmonger\n"
+  except:
+    data1 += f"{emoji2} Warmonger\n"
+  try:
+    if(chal['bw_challenge_selfish'] >= 1):
+      data1 += f"{emoji1} Selfish\n"
+  except:
+    data1 += f"{emoji2} Selfish\n"
+  try:
+    if(chal['bw_challenge_slow_generator'] >= 1):
+      data1 += f"{emoji1} Minimum Wage\n"
+  except:
+    data1 += f"{emoji2} Minimum Wage\n"
+  try:
+    if(chal['bw_challenge_assassin'] >= 1):
+      data1 += f"{emoji1} Assassin\n"
+  except:
+    data1 += f"{emoji2} Assassin\n"
+  try:
+    if(chal['bw_challenge_reset_armor'] >= 1):
+      data1 += f"{emoji1} Regular Shopper\n"
+  except:
+    data1 += f"{emoji2} Regular Shopper\n"
+  try:
+    if(chal['bw_challenge_invisible_shop'] >= 1):
+      data1 += f"{emoji1} Invisible Shop\n"
+  except:
+    data1 += f"{emoji2} Invisible Shop\n"
+  try:
+    if(chal['bw_challenge_collector'] >= 1):
+      data1 += f"{emoji1} Collector\n"
+  except:
+    data1 += f"{emoji2} Collector\n"
+  try:
+    if(chal['bw_challenge_woodworker'] >= 1):
+      data1 += f"{emoji1} Woodworker\n"
+  except:
+    data1 += f"{emoji2} Woodworker\n"
+  try:
+    if(chal['bw_challenge_sponge'] >= 1):
+      data1 += f"{emoji1} Bridging For Dummies\n"
+  except:
+    data1 += f"{emoji2} Bridging For Dummies\n"
+  try:
+    if(chal['bw_challenge_toxic_rain'] >= 1):
+      data1 += f"{emoji1} Toxic Rain\n"
+  except:
+    data1 += f"{emoji2} Toxic Rain\n"
+  try:
+    if(chal['bw_challenge_defuser'] >= 1):
+      data1 += f"{emoji1} Defuser\n"
+  except:
+    data1 += f"{emoji2} Defuser\n"
+  try:
+    if(chal['bw_challenge_mining_fatigue'] >= 1):
+      data1 += f"{emoji1} Lazy Miner\n"
+  except:
+    data1 += f"{emoji2} Lazy Miner\n"
+  try:
+    if(chal['bw_challenge_no_healing'] >= 1):
+      data1 += f"{emoji1} Ultimate UHC\n"
+  except:
+    data1 += f"{emoji2} Ultimate UHC\n"
+  try:
+    if(chal['bw_challenge_hotbar'] >= 1):
+      data1 += f"{emoji1} Sleight of Hand\n"
+  except:
+    data1 += f"{emoji2} Sleight of Hand\n"
+  try:
+    if(chal['bw_challenge_weighted_items'] >= 1):
+      data2 += f"{emoji1} Weighted Items\n"
+  except:
+    data2 += f"{emoji2} Weighted Items\n"
+  try:
+    if(chal['bw_challenge_knockback_stick_only'] >= 1):
+      data2 += f"{emoji1} Social Distancing\n"
+  except:
+    data2 += f"{emoji2} Social Distancing\n"
+  try:
+    if(chal['bw_challenge_no_swords'] >= 1):
+      data2 += f"{emoji1} Swordless\n"
+  except:
+    data2 += f"{emoji2} Swordless\n"
+  try:
+    if(chal['bw_challenge_archer_only'] >= 1):
+      data2 += f"{emoji1} Marksman\n"
+  except:
+    data2 += f"{emoji2} Marksman\n"
+  try:
+    if(chal['bw_challenge_patriot'] >= 1):
+      data2 += f"{emoji1} Patriot\n"
+  except:
+    data2 += f"{emoji2} Patriot\n"
+  try:
+    if(chal['bw_challenge_stamina'] >= 1):
+      data2 += f"{emoji1} Stamina\n"
+  except:
+    data2 += f"{emoji2} Stamina\n"
+  try:
+    if(chal['bw_challenge_no_sprint'] >= 1):
+      data2 += f"{emoji1} Old Man\n"
+  except:
+    data2 += f"{emoji2} Old Man\n"
+  try:
+    if(chal['bw_challenge_capped_resources'] >= 1):
+      data2 += f"{emoji1} Capped Resources\n"
+  except:
+    data2 += f"{emoji2} Capped Resources\n"
+  try:
+    if(chal['bw_challenge_stop_light'] >= 1):
+      data2 += f"{emoji1} Red Light, Green Light\n"
+  except:
+    data2 += f"{emoji2} Red Light, Green Light\n"
+  try:
+    if(chal['bw_challenge_delayed_hitting'] >= 1):
+      data2 += f"{emoji1} Slow Reflexes\n"
+  except:
+    data2 += f"{emoji2} Slow Reflexes\n"
+  try:
+    if(chal['bw_challenge_no_hitting'] >= 1):
+      data2 += f"{emoji1} Pacifist\n"
+  except:
+    data2 += f"{emoji2} Pacifist\n"
+  try:
+    if(chal['bw_challenge_master_assassin'] >= 1):
+      data2 += f"{emoji1} Master Assassin\n"
+  except:
+    data2 += f"{emoji2} Master Assassin\n"
+  try:
+    if(chal['bw_challenge_no_shift'] >= 1):
+      data2 += f"{emoji1} Standing Tall\n"
+  except:
+    data2 += f"{emoji2} Standing Tall\n"
+  try:
+    if(chal['bw_challenge_protect_the_president'] >= 1):
+      data2 += f"{emoji1} Protect the President\n"
+  except:
+    data2 += f"{emoji2} Protect the President\n"
+  try:
+    if(chal['bw_challenge_cant_touch_this'] >= 1):
+      data2 += f"{emoji1} Can't Touch This\n"
+  except:
+    data2 += f"{emoji2} Can't Touch This\n"
+
+  bwc = discord.Embed(
+    title = f"{player}'s Bedwars Challenges",
+    colour = discord.Colour.blue()
+  )
+
+  bwc.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+
+  bwc.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/BedWars-64.png")
+
+  try:
+    count = chal['bw_unique_challenges_completed']
+  except:
+    count = 0
+
+  bwc.add_field(
+    name = f"{count}/30 Completed ({round(100*count/30,2)}%)",
+    value = f"{data1}"
+  )
+  bwc.add_field(
+    name = f"\u200b",
+    value = f"{data2}"
+  )
+
+  return bwc
+  
+
+def get_bwchallenges(uuid):
+  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  json_data = json.loads(response.text)
+  if(json_data['success'] == 'false'):
+    return "ERROR"
+  else:
+    return bwc(json_data)
+
 def guild(uuid):
   response = requests.get(f"https://api.hypixel.net/guild?key={apiKey}&player={uuid}")
   json_data = json.loads(response.text)
