@@ -5,6 +5,7 @@ from datetime               import datetime, date
 from math                   import floor
 import discord
 import settings
+import utils
 
 
 # Your friendly example event
@@ -31,3 +32,13 @@ class ResourceUpdate(BaseEvent):
               channel = client.get_channel(818611323755036702)
               await channel.send(content = f"Resources Updated: {rt}")
             settings.RESOURCE_LAST_UPDATED = lu
+        gameres = requests.get("https://api.hypixel.net/resources/games")
+        gmres = json.loads(gameres.text)
+        if gmres["success"] == True:
+          lu = gmres["lastUpdated"]
+          if lu != settings.GAMES_LAST_UPDATED:
+            if(settings.GAMES_LAST_UPDATED != 0):
+              rt = datetime.utcfromtimestamp(lu/1000).strftime('%m/%d/%Y %H:%M')
+              channel = client.get_channel(818611323755036702)
+              await channel.send(content = f"Games Resources Updated: {rt}")
+            settings.GAMES_LAST_UPDATED = lu
