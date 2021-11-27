@@ -259,9 +259,11 @@ def checkperm(member):
 def checkspecial(member,channel):
   #Checks if the person is verified and in stuffy disc, or if they are staff in ap disc in certain channels
   for x in member.roles:
+    # verified role in stuffybothome and stuffy disc
     if 795115422185816076 == x.id or 818283784763473952 == x.id or str(member) == "Stuffy#1359":
       return True
-    if 717220615861567508 == x.id:
+    # staff role in caps disc and trial staff role
+    if 717220615861567508 == x.id or 774717930117005337 == x.id:
       return True
   return False
 
