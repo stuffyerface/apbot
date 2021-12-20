@@ -242,8 +242,11 @@ def randomAp(type, excluded):
     return (f"{game}", "c" , aplist["achievements"][game]["one_time"][gameap].copy())
   elif(type == "t"):
     game = random.choice(list(aplist["achievements"].keys()).copy())
-    gameap = random.choice(list(aplist["achievements"][game]["tiered"].keys()).copy())
-    return (f"{game}", "t" , aplist["achievements"][game]["tiered"][gameap].copy())
+    try:
+      gameap = random.choice(list(aplist["achievements"][game]["tiered"].keys()).copy())
+      return (f"{game}", "t" , aplist["achievements"][game]["tiered"][gameap].copy())
+    except:
+      return randomAp(type, excluded)
 
 async def removeroles(member,roles):
   for x in member.roles:
