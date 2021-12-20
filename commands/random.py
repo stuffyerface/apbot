@@ -31,11 +31,8 @@ class Random(BaseCommand):
         # 'client' is the bot Client object
         
         if(checkperm(message.author)):
-          progress = randomAp()
+          progress = randomAp("c",[])
           progress = apFormat(progress, "Random Achievement")
-
-
-
           await message.channel.send(content = "", embed=progress)
         else:
           await message.channel.send(content = "", embed = embeds.emPremium)
