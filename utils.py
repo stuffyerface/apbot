@@ -227,10 +227,23 @@ def apFormat(inputAP, title):
   apEm.set_footer(text="AP bot by Stuffy")
   return apEm
 
-def randomAp():
-  game = random.choice(list(achres["achievements"].keys()).copy())
-  gameap = random.choice(list(achres["achievements"][game]["one_time"].keys()).copy())
-  return (f"{game}", f"{game}_{gameap.lower()}" , achres["achievements"][game]["one_time"][gameap].copy())
+def randomAp(type, excluded):
+  aplist = achres.copy()
+  if(type == "all"):
+    type = random.choice(["c","t"])
+  for x in excluded:
+    try:
+      aplist["achievements"].remove(x)
+    except:
+      pass
+  if(type == "c"):
+    game = random.choice(list(aplist["achievements"].keys()).copy())
+    gameap = random.choice(list(aplist["achievements"][game]["one_time"].keys()).copy())
+    return (f"{game}", "c" , aplist["achievements"][game]["one_time"][gameap].copy())
+  elif(type == "t"):
+    game = random.choice(list(aplist["achievements"].keys()).copy())
+    gameap = random.choice(list(aplist["achievements"][game]["tiered"].keys()).copy())
+    return (f"{game}", "t" , aplist["achievements"][game]["tiered"][gameap].copy())
 
 async def removeroles(member,roles):
   for x in member.roles:
