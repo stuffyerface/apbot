@@ -42,7 +42,7 @@ class Trivia(BaseCommand):
           if(settings.TRIVIAACTIVE == True):
             await message.channel.send("You must wait, there is already an active trivia game.")
           else:
-            progress = randomAp()
+            progress = randomAp("c",[])
             question = random.randint(1,3)
             if(question == 1): # for AP game
               answer = progress[0]
