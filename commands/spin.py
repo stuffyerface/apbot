@@ -115,12 +115,11 @@ class Spin(BaseCommand):
               roll.remove(20)
             if(str(x) == 'Max TKR'):
               roll.remove(21)
-            
-
-          select = random.choice(roll)
-          spun = f"Your next game to max is {games[select]}!"
-          spunurl = f"{imgspin[select]}"
-          spin.set_thumbnail(url = f"{spunurl}")
+          if roll != []:
+            select = random.choice(roll)
+            spun = f"Your next game to max is {games[select]}!"
+            spunurl = f"{imgspin[select]}"
+            spin.set_thumbnail(url = f"{spunurl}")
 
           if(len(roll) > 0):
             spin.add_field(
