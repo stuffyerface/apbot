@@ -10,7 +10,7 @@ from random                 import randint
 
 # So, a command class named Random will generate a 'random' command
 
-class Random2(BaseCommand):
+class Hunt(BaseCommand):
 
     def __init__(self):
         # A quick description for the help message
@@ -38,10 +38,8 @@ class Random2(BaseCommand):
           elif(params[1] not in ["none","christmas","summer","easter","halloween"]):
             await message.channel.send("Invalid parameter: '"+params[1]+"', Accepted values are: none, christmas, summer, easter, halloween")
             return
-          excluded = ["christmas","summer","easter","halloween"]
-          if(params[1] == "none"):
-            excluded = []
-          else:
+          excluded = ["christmas","summer","easter","halloween", "legacy"]
+          if(params[1] != "none"):
             excluded.remove(params[1])
           progress = randomAp(params[0],excluded)
           progress = apFormat(progress, "Random Achievement")
