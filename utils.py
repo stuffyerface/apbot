@@ -236,15 +236,29 @@ def randomAp(type, excluded):
       aplist["achievements"].remove(x)
     except:
       pass
+  if("legacy" in excluded):
+    legacy = True
+  else:
+    legacy = False
   if(type == "c"):
     game = random.choice(list(aplist["achievements"].keys()).copy())
     gameap = random.choice(list(aplist["achievements"][game]["one_time"].keys()).copy())
-    return (f"{game}", "c" , aplist["achievements"][game]["one_time"][gameap].copy())
+    try:
+      if aplist["achievements"][game]["one_time"][gameap]["legacy"] and legacy:
+        print("Legacy detected, rerolling.")
+        return randomAp(type, excluded)
+    except:
+      return (f"{game}", "c" , aplist["achievements"][game]["one_time"][gameap].copy())
   elif(type == "t"):
     game = random.choice(list(aplist["achievements"].keys()).copy())
     try:
       gameap = random.choice(list(aplist["achievements"][game]["tiered"].keys()).copy())
-      return (f"{game}", "t" , aplist["achievements"][game]["tiered"][gameap].copy())
+      try:
+        if aplist["achievements"][game]["tiered"][gameap]["legacy"] and legacy:
+          print("Legacy detected, rerolling.")
+          return randomAp(type, excluded)
+      except:
+        return (f"{game}", "t" , aplist["achievements"][game]["tiered"][gameap].copy())
     except:
       return randomAp(type, excluded)
 
