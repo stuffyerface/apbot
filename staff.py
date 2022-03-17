@@ -5,7 +5,7 @@ STAFF_LIST = [
   ("Stuffy", "2cfc8db571ed4eb3aacd53b8abff5ee2", "ADMIN")
 ]
 
-ONLINE_LIST = [["2cfc8db571ed4eb3aacd53b8abff5ee2", "Stuffy", "{}", 0],
+ONLINE_LIST = [["2cfc8db571ed4eb3aacd53b8abff5ee2", "Stuffy", "{}", 0, False],
                ["78800595c0e9445595ac4a93fa2a3a4c", "Pensul", "{}", 0, False],
                ["16ddab826eb74fff81d1e1566a3c6d19", "Bloozing", "{}", 0, False],
                ["fb178c95d152459eb8dcefd127894e38", "Jayavarmen", "{}", 0, False],
