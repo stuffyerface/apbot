@@ -16,7 +16,7 @@ import os
 class OnlineCheck(BaseEvent):
 
     def __init__(self):
-        interval_minutes = 2  # Set the interval for this event
+        interval_minutes = 4  # Set the interval for this event
         super().__init__(interval_minutes)
 
     # Override the run() method
