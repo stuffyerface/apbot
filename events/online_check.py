@@ -32,7 +32,7 @@ class OnlineCheck(BaseEvent):
       # print.
       for x in range(len(stafflist)):
         #print(x)
-        info = requests.get(f"https://api.hypixel.net/player?uuid={stafflist[x][0]}&key={apiKey}")
+        info = requests.get(f"https://api.hypixel.net/skyblock/profiles?uuid={stafflist[x][0]}&key={apiKey}")
         info = json.loads(info.text)
         if(info["success"] == False):
           print(f"Failed to get info for player {stafflist[x][1]}")
