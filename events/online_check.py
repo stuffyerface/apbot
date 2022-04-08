@@ -16,7 +16,7 @@ import os
 class OnlineCheck(BaseEvent):
 
     def __init__(self):
-        interval_minutes = 4  # Set the interval for this event
+        interval_minutes = 5  # Set the interval for this event
         super().__init__(interval_minutes)
 
     # Override the run() method
@@ -56,5 +56,5 @@ class OnlineCheck(BaseEvent):
               await channel.send(content = f"{stafflist[x][1]} is inactive")
               staff.ONLINE_LIST[x][3] = 0
               staff.ONLINE_LIST[x][4] = False
-            if stafflist[x][3] <2:
+            if stafflist[x][3] <4:
               staff.ONLINE_LIST[x][3] = stafflist[x][3]+1
