@@ -44,14 +44,14 @@ class OnlineCheck(BaseEvent):
         channel = client.get_channel(953396331832021114)
         if stafflist[x][2] != info and stafflist[x][4] == False:
           print(f"{stafflist[x][1]} is active")
-          await channel.send(content = f"<@!108359975536992256> {stafflist[x][1]} is active")
+          await channel.send(content = f"<@&961978162416345168> {stafflist[x][1]} is active")
           staff.ONLINE_LIST[x][3] = 0
           staff.ONLINE_LIST[x][2] = info
           staff.ONLINE_LIST[x][4] = True
         else:
           #print(f"Updated info for player {stafflist[x][1]}")
           if(stafflist[x][4]):
-            if stafflist[x][3] == 2:
+            if stafflist[x][3] == 4:
               print(f"{stafflist[x][1]} is inactive")
               await channel.send(content = f"{stafflist[x][1]} is inactive")
               staff.ONLINE_LIST[x][3] = 0
