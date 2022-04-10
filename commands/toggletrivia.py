@@ -42,6 +42,7 @@ class ToggleTrivia(BaseCommand):
             
             channel = client.get_channel(849503309349650452)
             role = message.author.guild.get_role(962795815208890428)
+            print(role)
 
             
             await channel.set_permissions(role, send_messages=toggle)
