@@ -44,5 +44,5 @@ class ToggleTrivia(BaseCommand):
             role = message.author.guild.get_role(628594905287098388)
 
             
-            await channel.set_permissions(role, send_messages=toggle)
+            await channel.set_permissions(role, send_messages=toggle, read_messages=toggle)
             await message.channel.send(f"Toggled chatting in {message.channel} {params[0].lower()}")
