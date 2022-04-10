@@ -286,6 +286,16 @@ def checkperm(member):
       return True
   return False
 
+def checktrivia(member,channel):
+  for x in member.roles:
+    # verified role in stuffybothome and stuffy disc
+    if 795115422185816076 == x.id or 818283784763473952 == x.id or str(member) == "Stuffy#1359":
+      return True
+    # trivia host role in caps disc, also in trivia channel
+    if 962768048174030879 == x.id and channel == 849503309349650452:
+      return True
+  return False
+
 def checkspecial(member,channel):
   #Checks if the person is verified and in stuffy disc, or if they are staff in ap disc in certain channels
   for x in member.roles:
