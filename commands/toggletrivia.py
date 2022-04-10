@@ -19,7 +19,7 @@ class ToggleTrivia(BaseCommand):
         # Parameters will be separated by spaces and fed to the 'params' 
         # argument in the handle() method
         # If no params are expected, leave this list empty or set it to None
-        params = []
+        params = ["toggle"]
         super().__init__(description, params)
 
     # Override the handle() method
@@ -35,9 +35,14 @@ class ToggleTrivia(BaseCommand):
           if(message.channel.id != 849503309349650452):
             await message.channel.send("Wrong channel bozo")
           else:
+            if params[0].to_lower() == "on":
+              toggle = True
+            else:
+              toggle = False
+            
             channel = client.get_channel(849503309349650452)
             role = message.author.guild.get_role(962795815208890428)
-            perms = channel.overwrites_for(role)
-            perms.send_messages = not perms.send_messages
-            await channel.set_permissions(role, overwrite=perms)
-            await message.channel.send(f"Toggles chatting in {message.channel}")
+
+            
+            await channel.set_permissions(role, send_messages=toggle)
+            await message.channel.send(f"Toggled chatting in {message.channel} {params[0].to_lower()}")
