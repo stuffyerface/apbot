@@ -38,7 +38,7 @@ class Trivia(BaseCommand):
         # 'message' is the discord.py Message object for the command to handle
         # 'client' is the bot Client object
         
-        if(checkspecial(message.author,message.channel)):
+        if(checktrivia(message.author,message.channel)):
           if(settings.TRIVIAACTIVE == True):
             await message.channel.send("You must wait, there is already an active trivia game.")
           else:
