@@ -32,7 +32,7 @@ class ToggleTrivia(BaseCommand):
         # 'client' is the bot Client object
         
         if(checktrivia(message.author,message.channel)):
-          if(message.channel != 849503309349650452):
+          if(message.channel.id != 849503309349650452):
             await message.channel.send("Wrong channel bozo")
           else:
             channel = client.get_channel(849503309349650452)
