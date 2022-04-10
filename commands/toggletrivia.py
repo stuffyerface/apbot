@@ -38,6 +38,6 @@ class ToggleTrivia(BaseCommand):
             channel = client.get_channel(849503309349650452)
             role = message.author.guild.get_role(962795815208890428)
             perms = channel.overwrites_for(role)
-            perms.send_messages = !perms.send_messages
+            perms.send_messages = not perms.send_messages
             await channel.set_permissions(role, overwrite=perms)
             await message.channel.send(f"Toggles chatting in {message.channel}")
