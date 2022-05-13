@@ -292,7 +292,7 @@ def checktrivia(member,channel):
     if 795115422185816076 == x.id or 818283784763473952 == x.id or str(member) == "Stuffy#1359":
       return True
     # trivia host role in caps disc, also in trivia channel
-    if 962768048174030879 == x.id and channel.id == 849503309349650452:
+    if 962767583550013470 == x.id and channel.id == 849503309349650452:
       return True
   return False
 
