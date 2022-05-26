@@ -227,9 +227,13 @@ class Wins(BaseCommand):
             w_d = profile["player"]["stats"]["Duels"]["wins"]
           except:
             w_d = 0
+          try:
+            w_ww = profile["player"]["stats"]["WoolGames"]["wool_wars"]["wins"]
+          except:
+            w_ww = 0
           
           print(wins)
-          wins = w_arcade + w_ab + w_bw + w_bsg + w_bsg2 + w_bb + w_cvc + w_cw + w_d + w_mw + w_mm + w_pb + w_quake + w_sc + w_sw + w_sh + w_suhc + w_tnt + w_tkr + w_uhc + w_vz + w_walls + w_wl
+          wins = w_arcade + w_ab + w_bw + w_bsg + w_bsg2 + w_bb + w_cvc + w_cw + w_d + w_mw + w_mm + w_pb + w_quake + w_sc + w_sw + w_sh + w_suhc + w_tnt + w_tkr + w_uhc + w_vz + w_walls + w_wl + w_ww
           wins = math.trunc(wins)
           if(debug):
             print(f" Arcade: {w_arcade} Arena: {w_ab} Bedwars: {w_bw}\n Blitz: {w_bsg + w_bsg2} Build Battle: {w_bb} CvC: {w_cvc} \n Crazy Walls: {w_cw} Duels: {w_d} Mega Walls: {w_mw}\n Murder Mystery: {w_mm} Paintball: {w_pb} Quake: {w_quake}\n Skyclash: {w_sc} Skywars: {w_sw} Smash Heroes: {w_sh}\n Speed UHC: {w_suhc} Tnt Games: {w_tnt} TKR: {w_tkr}\n UHC: {w_uhc} VampireZ: {w_vz} Walls: {w_walls}\n Warlords: {w_wl}")
