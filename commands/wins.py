@@ -228,7 +228,7 @@ class Wins(BaseCommand):
           except:
             w_d = 0
           try:
-            w_ww = profile["player"]["stats"]["WoolGames"]["wool_wars"]["wins"]
+            w_ww = profile["player"]["stats"]["WoolGames"]["wool_wars"]["stats"]["wins"]
           except:
             w_ww = 0
           
