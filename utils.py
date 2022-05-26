@@ -718,6 +718,65 @@ def get_blitz(uuid):
   else:
     return blitz(json_data)
 
+def woolwars(profile):
+  try:
+    ww = profile["player"]["stats"]["WoolGames"]["wool_wars"]["stats"]
+  except:
+    return "ERROR"
+  player = profile['player']['displayname']
+  try:
+    ww_wins = "{:,}".format(ww["wins"])
+  except:
+    ww_wins = 0
+  try:
+    ww_assists = "{:,}".format(ww["assists"])
+  except:
+    ww_assists = 0
+  try:
+    ww_broken = "{:,}".format(ww["blocks_broken"])
+  except:
+    ww_broken = 0
+  try:
+    ww_placed = "{:,}".format(ww["wool_placed"])
+  except:
+    ww_placed = 0
+  try:
+    ww_kills = "{:,}".format(ww["kills"])
+  except:
+    ww_kills = 0
+  
+  data = ""
+  data += f"Wins: {ww_wins}\n"
+  data += f"Kills: {ww_kills}\n"
+  data += f"Assists: {ww_assists}\n"
+  data += f"Blocks Broken: {ww_broken}\n"
+  data += f"Blocks Placed: {ww_placed}\n"
+  
+  wool = discord.Embed(
+    title = f"{player}'s Wool Wars Stats",
+    colour = discord.Colour.blue()
+  )
+
+  wool.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+
+  wool.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/WoolWars-64.png")
+
+  wool.add_field(
+    name = f"\u200b",
+    value = f"{data}"
+  )
+
+  return wool
+  
+
+def get_ww(uuid):
+  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  json_data = json.loads(response.text)
+  if(json_data['success'] == 'false'):
+    return "ERROR"
+  else:
+    return woolwars(json_data)
+
 
 def legs(profile):
   try:
