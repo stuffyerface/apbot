@@ -1944,7 +1944,7 @@ def get_mwprog(prof,player,kit):
     progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
 
     try:
-      collector = "{:,}".format(prof['shaman_c_activations'])
+      collector = "{:,}".format(prof['pigman_g_activations'])
     except:
       collector = 0
 
