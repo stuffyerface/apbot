@@ -55,6 +55,7 @@ gamesDict = {
   "vampirez" : "VampireZ",
   "pit" : "Pit",
   "bedwars" : "Bedwars",
+  "woolgames" : "Wool Wars",
   "guess" : "||Game?||"
 }
 
@@ -154,11 +155,15 @@ gamesAlias = {
   "thepit" : "pit",
   "bedwars" : "bedwars",
   "bw" : "bedwars",
-  "bed" : "bedwars"
+  "bed" : "bedwars",
+  "wool" : "woolgames"
+  "ww" : "woolgames"
+  "woolwars" : "woolgames"
+  "wool wars" : "woolgames"
 }
 
 ExcludedChars = [
-  "2017","2018","2019","2020","2021","2022", " ", "+", "/", "-", "%", "#", "*", "_", "?", "!", "(", ")", ",", "'", ":", ";", ".", "&"
+  "2017","2018","2019","2020","2021","2022", "2023", " ", "+", "/", "-", "%", "#", "*", "_", "?", "!", "(", ")", ",", "'", ":", ";", ".", "&"
 ]
 def shortAns(inputStr, num):
   shortened = inputStr.lower()
