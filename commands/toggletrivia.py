@@ -35,8 +35,10 @@ class ToggleTrivia(BaseCommand):
           if(message.channel.id != 849503309349650452):
             await message.channel.send("Wrong channel bozo")
           else:
+            onOff = "off"
             if params[0].lower() == "on":
               toggle = True
+              onOff = "on"
             else:
               toggle = False
             
@@ -45,4 +47,5 @@ class ToggleTrivia(BaseCommand):
 
             
             await channel.set_permissions(role, send_messages=toggle, read_messages=toggle)
-            await message.channel.send(f"Toggled chatting in {message.channel} {params[0].lower()}")
+              
+            await message.channel.send(f"Toggled chatting in {message.channel} {onOff}")
