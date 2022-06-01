@@ -156,9 +156,9 @@ gamesAlias = {
   "bedwars" : "bedwars",
   "bw" : "bedwars",
   "bed" : "bedwars",
-  "wool" : "woolgames"
-  "ww" : "woolgames"
-  "woolwars" : "woolgames"
+  "wool" : "woolgames",
+  "ww" : "woolgames",
+  "woolwars" : "woolgames",
   "wool wars" : "woolgames"
 }
 
