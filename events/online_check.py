@@ -24,6 +24,7 @@ class OnlineCheck(BaseEvent):
 
     async def run(self, client):
        #("name","uuid","rank")
+      return
       stafflist = staff.ONLINE_LIST
       apiKey = os.getenv('APIKEY')
       # Need to parse the staff list, checking
