@@ -453,12 +453,12 @@ def get_tourney(uuid):
   else:
     tourney = discord.Embed(
       title = f"Active Tournament: Mini Walls #1",
-      colour = discord.Colour.orange()
+      colour = discord.Colour.green()
     )
 
     tourney.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
 
-    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/TNT-64.png")
+    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/Arcade-64.png")
 
     player = json_data['player']['displayname']
     try:
