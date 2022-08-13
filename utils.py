@@ -452,7 +452,7 @@ def get_tourney(uuid):
     return "ERROR"
   else:
     tourney = discord.Embed(
-      title = f"Active Tournament: Tnt Run #1",
+      title = f"Active Tournament: Mini Walls #1",
       colour = discord.Colour.orange()
     )
 
@@ -462,7 +462,7 @@ def get_tourney(uuid):
 
     player = json_data['player']['displayname']
     try:
-      new = json_data['player']['tourney']['tnt_run_0']
+      new = json_data['player']['tourney']['mini_walls_0']
     except:
       new = []
     '''
@@ -471,15 +471,6 @@ def get_tourney(uuid):
     except:
       tkills = 0
     '''
-    try:
-      tdeaths = json_data['player']['stats']['TNTGames']['deaths_tourney_tnt_run_0']
-    except:
-      tdeaths = 0
-
-    try:
-      twins = json_data['player']['stats']['TNTGames']['wins_tourney_tnt_run_0']
-    except:
-      twins = 0
     '''
     try:
       trwins = json_data['player']['stats']['MCGO']['round_wins_tourney_mcgo_defusal_1']
@@ -501,10 +492,10 @@ def get_tourney(uuid):
     except:
       minplayed = 0
 
-    val = f"{player} has played **{games}/120** games so far\n"
+    val = f"{player} has played **{games}/50** games so far\n"
     val += f"with **{tributes}/100** tributes earned\n"
     val += f"and **{minplayed}** minutes played!\n\n"
-    val += f"Wins: {twins}, Deaths: {tdeaths}\n"
+    #val += f"Wins: {twins}, Deaths: {tdeaths}\n"
 
     tourney.add_field(
       name = f"\u200b",
