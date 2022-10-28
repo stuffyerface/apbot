@@ -492,7 +492,7 @@ def get_tourney(uuid):
     except:
       minplayed = 0
 
-    val = f"{player} has played **{games}/50** games so far\n"
+    val = f"{player} has played **{games}/72** games so far\n"
     val += f"with **{tributes}/100** tributes earned\n"
     val += f"and **{minplayed}** minutes played!\n\n"
     #val += f"Wins: {twins}, Deaths: {tdeaths}\n"
