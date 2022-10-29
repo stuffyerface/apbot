@@ -494,7 +494,7 @@ def get_tourney(uuid):
       
     try:
       raceswon = json_data['player']['stats']['GingerBread']['tourney_gingerbread_solo_1_wins']
-     except:
+    except:
       raceswon = 0
 
     val = f"{player} has played **{games}/72** games so far\n"
