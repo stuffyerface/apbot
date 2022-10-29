@@ -491,8 +491,14 @@ def get_tourney(uuid):
       minplayed = new['playtime']
     except:
       minplayed = 0
+      
+    try:
+      raceswon = json_data['player']['stats']['GingerBread']['tourney_gingerbread_solo_1_wins']
+     except:
+      raceswon = 0
 
     val = f"{player} has played **{games}/72** games so far\n"
+    val += f"and **{raceswon}/{games}** gold trophies\n"
     val += f"with **{tributes}/100** tributes earned\n"
     val += f"and **{minplayed}** minutes played!\n\n"
     #val += f"Wins: {twins}, Deaths: {tdeaths}\n"
