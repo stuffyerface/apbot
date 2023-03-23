@@ -452,17 +452,17 @@ def get_tourney(uuid):
     return "ERROR"
   else:
     tourney = discord.Embed(
-      title = f"Active Tournament: TKR #2",
+      title = f"Active Tournament: Blitz Duo #3",
       colour = discord.Colour.green()
     )
 
     tourney.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
 
-    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/TurboKartRacers-64.png")
+    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/SG-64.png")
 
     player = json_data['player']['displayname']
     try:
-      new = json_data['player']['tourney']['gingerbread_solo_1']
+      new = json_data['player']['tourney']['blitz_duo_2']
     except:
       new = []
     '''
@@ -493,15 +493,24 @@ def get_tourney(uuid):
       minplayed = 0
       
     try:
-      raceswon = json_data['player']['stats']['GingerBread']['tourney_gingerbread_solo_1_wins']
+      twins = json_data['player']['stats']['HungerGames']['tourney_blitz_duo_2_wins_teams']
     except:
-      raceswon = 0
+      twins = 0
+      
+    try:
+      tdeaths = json_data['player']['stats']['HungerGames']['tourney_blitz_duo_2_deaths']
+    except:
+      tdeaths = 0
+      
+    try:
+      tkills = json_data['player']['stats']['HungerGames']['tourney_blitz_duo_2_kills']
+    except:
+      tkills = 0
 
-    val = f"{player} has played **{games}/72** games so far\n"
-    val += f"and **{raceswon}/{games}** gold trophies\n"
+    val = f"{player} has played **{games}/70** games so far\n"
     val += f"with **{tributes}/100** tributes earned\n"
     val += f"and **{minplayed}** minutes played!\n\n"
-    #val += f"Wins: {twins}, Deaths: {tdeaths}\n"
+    val += f"Wins: {twins}, Kills: {tkills}, Deaths: {tdeaths}\n"
 
     tourney.add_field(
       name = f"\u200b",
