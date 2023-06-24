@@ -7,4 +7,4 @@ Also used for some features exclusive to the Stuffy AP Discord
 https://discord.gg/TAf8hvaymD
 
 ## Contact Me
-@Stuffy#1359 on discord.
+@stuffy on discord.
