@@ -495,21 +495,21 @@ def get_tourney(uuid):
       minplayed = 0
       
     try:
-      twins = json_data['player']['stats']['WoolGames']['tourney_wool_wars_0_wins']
+      twins = json_data['player']['stats']['WoolGames']['wool_wars']['stats']['tourney']['wins']
     except:
       twins = 0
       
     try:
-      tdeaths = json_data['player']['stats']['WoolGames']['tourney_wool_wars_0_deaths']
+      tdeaths = json_data['player']['stats']['WoolGames']['wool_wars']['stats']['tourney']['deaths']
     except:
       tdeaths = 0
       
     try:
-      tkills = json_data['player']['stats']['WoolGames']['tourney_wool_wars_0_kills']
+      tkills = json_data['player']['stats']['WoolGames']['wool_wars']['stats']['tourney']['kills']
     except:
       tkills = 0
 
-    val = f"{player} has played **{games}/60** games so far\n"
+    val = f"{player} has played **{games}/100** games so far\n"
     val += f"with **{tributes}/100** tributes earned\n"
     val += f"and **{minplayed}** minutes played!\n\n"
     val += f"Wins: {twins}, Kills: {tkills}, Deaths: {tdeaths}\n"
