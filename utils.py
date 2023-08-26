@@ -524,6 +524,18 @@ def get_tourney(uuid):
 
     return tourney
 
+def get_wwclass(uuid):
+  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  json_data = json.loads(response.text)
+  if(json_data['success'] == 'false'):
+    return "ERROR"
+  else:
+    try:
+      wwclass = json_data['player'['stats']['WoolGames']['wool_wars']['selected_class']
+      return wwclass
+    except:
+      return "ERROR"
+
 def get_tnt(uuid):
   response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
   json_data = json.loads(response.text)
