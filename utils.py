@@ -445,7 +445,7 @@ def get_discord(uuid):
           if(discTag[-5] != "#"):
             discTag = discTag + "#0"
         except:
-          continue
+          discTag = discTag
         return discTag
     except:
       return "ERROR"
