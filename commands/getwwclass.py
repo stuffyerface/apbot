@@ -9,7 +9,7 @@ from random                 import randint
 
 # So, a command class named Random will generate a 'random' command
 
-class Blitz(BaseCommand):
+class WWClass(BaseCommand):
 
     def __init__(self):
         # A quick description for the help message
