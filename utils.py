@@ -532,9 +532,9 @@ def get_wwclass(uuid):
   else:
     ret = ""
     try:
-      ret = json_data['player'['stats']['WoolGames']['wool_wars']['selected_class'] 
+      ret = json_data['player'['stats']['WoolGames']['wool_wars']['selected_class']
     except:
-      return ""
+      ret = ""
     return ret
 
 def get_tnt(uuid):
