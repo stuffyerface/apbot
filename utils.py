@@ -441,8 +441,9 @@ def get_discord(uuid):
   else:
     try:
         discTag = json_data['player']['socialMedia']['links']['DISCORD']
-        if(discTag[-5] != "#"):
-          discTag = discTag + "#0"
+        try:
+          if(discTag[-5] != "#"):
+            discTag = discTag + "#0"
         return discTag
     except:
       return "ERROR"
