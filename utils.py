@@ -530,11 +530,12 @@ def get_wwclass(uuid):
   if(json_data['success'] == 'false'):
     return "ERROR"
   else:
+    ret = ""
     try:
-      wwclass = json_data['player'['stats']['WoolGames']['wool_wars']['selected_class']
-      return wwclass
+      ret = json_data['player'['stats']['WoolGames']['wool_wars']['selected_class'] 
     except:
-      return "ERROR"
+      return ""
+    return ret
 
 def get_tnt(uuid):
   response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
