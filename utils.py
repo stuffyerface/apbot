@@ -467,7 +467,7 @@ def get_tourney(uuid):
 
     player = json_data['player']['displayname']
     try:
-      new = json_data['player']['tourney']['bedwars_doubles_1']
+      new = json_data['player']['tourney']['bedwars_doubles_2']
     except:
       new = []
     '''
@@ -498,21 +498,21 @@ def get_tourney(uuid):
       minplayed = 0
       
     try:
-      twins = json_data['player']['stats']['BedWars']['wool_wars']['stats']['tourney']['wool_wars_1']['wins']
+      twins = json_data['player']['stats']['BedWars']['bedwars']['stats']['tourney']['bedwars_doubles_2']['wins']
     except:
       twins = 0
       
     try:
-      tdeaths = json_data['player']['stats']['WoolGames']['wool_wars']['stats']['tourney']['wool_wars_1']['deaths']
+      tdeaths = json_data['player']['stats']['BedWars']['bedwars']['stats']['tourney']['bedwars_doubles_2']['deaths']
     except:
       tdeaths = 0
       
     try:
-      tkills = json_data['player']['stats']['WoolGames']['wool_wars']['stats']['tourney']['wool_wars_1']['kills']
+      tkills = json_data['player']['stats']['bedwars']['bedwars']['stats']['tourney']['bedwars_doubles_2']['kills']
     except:
       tkills = 0
 
-    val = f"{player} has played **{games}/80** games so far\n"
+    val = f"{player} has played **{games}/40** games so far\n"
     val += f"with **{tributes}/100** tributes earned\n"
     val += f"and **{minplayed}** minutes played!\n\n"
     val += f"Wins: {twins}, Kills: {tkills}, Deaths: {tdeaths}\n"
