@@ -514,7 +514,7 @@ def get_tourney(uuid):
     val = f"{player} has played **{games}/40** games so far\n"
     val += f"with **{tributes}/100** tributes earned\n"
     val += f"and **{minplayed}** minutes played!\n\n"
-    val += f"Wins: {twins}, Kills: {tkills}, Deaths: {tdeaths}, Final Kills: {fkills}, Final Deaths: {fdeaths}\n"
+    val += f"Wins: {twins}\nKills: {tkills}, Deaths: {tdeaths}\nFinal Kills: {fkills}, Final Deaths: {fdeaths}\n"
 
     tourney.add_field(
       name = f"\u200b",
