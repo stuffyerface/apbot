@@ -467,21 +467,10 @@ def get_tourney(uuid):
 
     player = json_data['player']['displayname']
     try:
-      new = json_data['player']['tourney']['bedwars_doubles_1']
+      new = json_data['player']['tourney']['bedwars_eight_two_1']
     except:
       new = []
-    '''
-    try:
-      tkills = json_data['player']['stats']['MCGO']['kills_tourney_mcgo_defusal_1']
-    except:
-      tkills = 0
-    '''
-    '''
-    try:
-      trwins = json_data['player']['stats']['MCGO']['round_wins_tourney_mcgo_defusal_1']
-    except:
-      trwins = 0
-    '''
+      
     try:
       games = new['games_played']
     except:
@@ -498,24 +487,34 @@ def get_tourney(uuid):
       minplayed = 0
       
     try:
-      twins = json_data['player']['stats']['BedWars']['wool_wars']['stats']['tourney']['wool_wars_1']['wins']
+      twins = json_data['player']['stats']['Bedwars']['tourney_bedwars_eight_two_1_wins_bedwars']
     except:
       twins = 0
       
     try:
-      tdeaths = json_data['player']['stats']['WoolGames']['wool_wars']['stats']['tourney']['wool_wars_1']['deaths']
+      tdeaths = json_data['player']['stats']['Bedwars']['tourney_bedwars_eight_two_1_deaths_bedwars']
     except:
       tdeaths = 0
       
     try:
-      tkills = json_data['player']['stats']['WoolGames']['wool_wars']['stats']['tourney']['wool_wars_1']['kills']
+      tkills = json_data['player']['stats']['Bedwars']['tourney_bedwars_eight_two_1_kills_bedwars']
     except:
       tkills = 0
 
-    val = f"{player} has played **{games}/80** games so far\n"
+    try:
+      fdeaths = json_data['player']['stats']['Bedwars']['tourney_bedwars_eight_two_1_final_deaths_bedwars']
+    except:
+      fdeaths = 0
+      
+    try:
+      fkills = json_data['player']['stats']['Bedwars']['tourney_bedwars_eight_two_1_final_kills_bedwars']
+    except:
+      fkills = 0
+
+    val = f"{player} has played **{games}/40** games so far\n"
     val += f"with **{tributes}/100** tributes earned\n"
     val += f"and **{minplayed}** minutes played!\n\n"
-    val += f"Wins: {twins}, Kills: {tkills}, Deaths: {tdeaths}\n"
+    val += f"Wins: {twins}, Kills: {tkills}, Deaths: {tdeaths}, Final Kills: {fkills}, Final Deaths: {fdeaths}\n"
 
     tourney.add_field(
       name = f"\u200b",
