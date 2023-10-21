@@ -457,17 +457,17 @@ def get_tourney(uuid):
     return "ERROR"
   else:
     tourney = discord.Embed(
-      title = f"Active Tournament: Wool Wars #2",
+      title = f"Active Tournament: Bed Wars Doubles #2",
       colour = discord.Colour.red()
     )
 
     tourney.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
 
-    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/WoolWars-64.png")
+    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/BedWars-64.png")
 
     player = json_data['player']['displayname']
     try:
-      new = json_data['player']['tourney']['wool_wars_1']
+      new = json_data['player']['tourney']['bedwars_doubles_1']
     except:
       new = []
     '''
@@ -498,7 +498,7 @@ def get_tourney(uuid):
       minplayed = 0
       
     try:
-      twins = json_data['player']['stats']['WoolGames']['wool_wars']['stats']['tourney']['wool_wars_1']['wins']
+      twins = json_data['player']['stats']['BedWars']['wool_wars']['stats']['tourney']['wool_wars_1']['wins']
     except:
       twins = 0
       
