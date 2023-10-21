@@ -522,7 +522,7 @@ def get_tourney(uuid):
       value = f"{val}"
     )
 
-    return tourney
+    return tourney '''Cashboys was here'''
 
 def get_wwclass(uuid):
   response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
