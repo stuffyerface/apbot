@@ -1,6 +1,7 @@
 from commands.base_command  import BaseCommand
 from utils                  import *
 from random                 import randint
+from re                     import *
 
 
 # Your friendly example event
@@ -31,6 +32,8 @@ class Verify(BaseCommand):
         # 'client' is the bot Client object
         perm = False
         member = message.author
+        member2 = re.sub(r'#0$', '', str(member))
+
         if(message.channel.id == 818238693075976243):
           perm = True
         if(perm):
@@ -46,8 +49,8 @@ class Verify(BaseCommand):
           elif(progress == "ERROR"):
             msg = "Make sure to link your discord in your hypixel settings and try verifying again."
           else:
-            print("Ingame: "+ progress + " Actual: "+ str(member))
-            if(progress == str(member)):
+            print("Ingame: "+ progress + " Actual: "+ str(member2))
+            if(progress == member2):
               try:
                 await member.edit(nick= get_Name(username))
               except:
@@ -66,7 +69,7 @@ class Verify(BaseCommand):
 
               msg = f"Successfully verified {get_Name(username)}"
             else:
-              msg = f"The username you entered is not linked to your discord account\nYour ID: {str(member)}\nLinked ID: {progress}"
+              msg = f"The username you entered is not linked to your discord account\nYour ID: {str(member2)}\nLinked ID: {progress}"
 
 
 
