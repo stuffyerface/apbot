@@ -31,6 +31,7 @@ class Update(BaseCommand):
         # 'client' is the bot Client object
         perm = False
         member = message.author
+        member2 = re.sub(r'#0$', '', str(member))
         emoji1 = "<:achievement:819360686290370567>"
         if(message.channel.id == 818244035277881344):
           perm = True
@@ -77,7 +78,7 @@ class Update(BaseCommand):
 
               msg = f"Successfully updated {get_Name(username)}"
             else:
-              msg = f"The username you entered is not linked to your discord account\nYour ID: {str(member)}\nLinked ID: {progress}"
+              msg = f"The username you entered is not linked to your discord account\nYour ID: {str(member2)}\nLinked ID: {progress}"
 
 
 
