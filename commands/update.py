@@ -1,6 +1,7 @@
 from commands.base_command  import BaseCommand
 from utils                  import *
 from random                 import randint
+import re
 
 
 # Your friendly example event
