@@ -50,7 +50,7 @@ class Update(BaseCommand):
           elif(progress == "ERROR"):
             msg = "Make sure to link your discord in your hypixel settings and try verifying again."
           else:
-            if(progress == str(member)):
+            if(progress == str(member2)):
               try:
                 await member.edit(nick= get_Name(username))
               except:
