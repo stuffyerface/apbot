@@ -10,4 +10,3 @@ six
 tzlocal
 websockets
 requests
-re
