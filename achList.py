@@ -78,7 +78,7 @@ achs=[(c_general,t_general,"Max General"),(c_housing,t_housing,"Max Housing"),(c
 
 c_seasonal=[]
 c_legacy=["arcade_ptb_ride_bat","general_gifting","vampirez_wizard"]
-
+#t_legacy=["bedwars_loot_box"]
 
 aplist = [
   ["arcade","Arcade"],
