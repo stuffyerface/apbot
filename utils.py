@@ -452,17 +452,17 @@ def get_tourney(uuid):
     return "ERROR"
   else:
     tourney = discord.Embed(
-      title = f"Active Tournament: Grinch Simulator #2",
+      title = f"Active Tournament: TNT Run #2",
       colour = discord.Colour.red()
     )
 
     tourney.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
 
-    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/Arcade-64.png")
+    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/TNT-64.png")
 
     player = json_data['player']['displayname']
     try:
-      new = json_data['player']['tourney']['grinch_simulator_1']
+      new = json_data['player']['tourney']['tnt_run_1']
     except:
       new = []
       
@@ -482,24 +482,19 @@ def get_tourney(uuid):
       minplayed = 0
       
     try:
-      twins = json_data['player']['stats']['Arcade']['wins_grinch_simulator_v2_tourney_grinch_simulator_1']
+      twins = json_data['player']['stats']['TNTGames']['wins_tourney_tnt_run_1']
     except:
       twins = 0
       
     try:
-      tlosses = json_data['player']['stats']['Arcade']['losses_grinch_simulator_v2_tourney_grinch_simulator_1']
+      tlosses = json_data['player']['stats']['TNTGames']['deaths_tourney_tnt_run_1']
     except:
       tlosses = 0
-      
-    try:
-      tgifts = json_data['player']['stats']['Arcade']['gifts_grinch_simulator_v2_tourney_grinch_simulator_1']
-    except:
-      tgifts = 0
 
     val = f"{player} has played **{games}/60** games so far\n"
     val += f"with **{tributes}/100** tributes earned\n"
     val += f"and **{minplayed}** minutes played!\n\n"
-    val += f"Wins: {twins}, Losses: {tlosses}\n Gifts : {tgifts}"
+    val += f"Wins: {twins}, Losses: {tlosses}"
 
     tourney.add_field(
       name = f"\u200b",
