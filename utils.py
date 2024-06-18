@@ -1417,7 +1417,7 @@ def get_mwprog(prof,player,kit):
     prog += f"Biological Restoration: {bio_restore}/2,500\n"
     prog += f"Beyond the Grave: {beyond_the_grave}/15\n"
 
-    progress.add_field(name = "3 tracked skins", value = f"{prog}")
+    progress.add_field(name = "4 tracked skins", value = f"{prog}")
   
   #
   # HUNTER
@@ -1439,13 +1439,28 @@ def get_mwprog(prof,player,kit):
       cake_hunter = "{:,}".format(prof['cakes_found'])
     except:
       cake_hunter = 0
+
+
+    try:
+      own1 = prof['hunter_force_of_nature_final_kills']
+    except:
+      own1 = 0
+    try:
+      own2 = prof['hunter_force_of_nature_final_assists']
+    except:
+      own2 = 0
+    try:
+      one_with_nature = "{:,}".format(own1+own2)
+    except:
+      one_with_nature = 0
     
 
     prog = ""
     prog += f"Treasure Hunter: {treasure_hunter}/300\n"
     prog += f"Cake Hunter: {cake_hunter}/150\n"
+    prog += f"One with Nature: {one_with_nature}/50\n"
 
-    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
   #
   # SHARK
