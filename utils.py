@@ -1608,11 +1608,23 @@ def get_mwprog(prof,player,kit):
       sleepytime = "{:,}".format(prof['zombie_beds_crafted'])
     except:
       sleepytime = 0
+      
+    try:
+      clutcherson = "{:,}".format(prof['zombie_a_healed_low_teammates'])
+    except:
+      clutcherson = 0
+      
+    try:
+      unstoppable_force = "{:,}".format(prof['zombie_berserked_kills'])
+    except:
+      unstoppable_force = 0
 
     prog = ""
     prog += f"Sleepytime: {sleepytime}/50\n"
+    prog += f"Mr Clutcherson: {clutcherson}/100\n"
+    prog += f"Unstoppable_force: {unstoppable_force}/25\n"
 
-    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
     
   #
