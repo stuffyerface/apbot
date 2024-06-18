@@ -1712,12 +1712,24 @@ def get_mwprog(prof,player,kit):
       high_on_ores = "{:,}".format(prof['blaze_amount_healed'])
     except:
       high_on_ores = 0
+
+    try:
+      light_em_up = "{:,}".format(prof['blaze_on_fire_kills'])
+    except:
+      light_em_up = 0
+
+    try:
+      blazecaller = "{:,}".format(prof['blaze_blazes_spawned'])
+    except:
+      blazecaller = 0
     
 
     prog = ""
     prog += f"High on Ores: {high_on_ores}/2,000\n"
+    prog += f"Light 'em up: {light_em_up}/10\n"
+    prog += f"Blazecaller: {blazecaller}/500\n"
 
-    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
   #
   # Skeleton
@@ -2030,9 +2042,9 @@ def get_mwprog(prof,player,kit):
     prog = ""
     prog += f"Much Dogs: {much_dogs}/500\n"
     prog += f"Revenge of the Wolves: {revenge_of_the_wolves}/5\n"
-    prog += f"Spring Hero (seasonal): {spring_hero}/100\n"
+    prog += f"Living on the Edge: {spring_hero}/250\n"
 
-    progress.add_field(name = "3 tracked skins", value = f"{prog}")
+    progress.add_field(name = "4 tracked skins", value = f"{prog}")
   
   #
   # PIGMAN
