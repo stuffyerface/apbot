@@ -1958,13 +1958,19 @@ def get_mwprog(prof,player,kit):
       heavy_eater = "{:,}".format(prof['moleman_c_junk_items_eaten'])
     except:
       heavy_eater = 0
+
+    try:
+      nom_nom = "{:,}".format(prof['moleman_c_activations'])
+    except:
+      nom_nom = 0
     
 
     prog = ""
     prog += f"Constructor: {constructor}/15,000\n"
     prog += f"Heavy Eater: {heavy_eater}/1,000\n"
+    prog += f"nom nom: {nom_nom}/1,000\n"
 
-    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
 
   #
