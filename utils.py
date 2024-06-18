@@ -1478,12 +1478,24 @@ def get_mwprog(prof,player,kit):
     except:
       hammerhead = 0
 
+    try:
+      explorer = "{:,}".format(prof['shark_g_activations'])
+    except:
+      explorer = 0
+
+    try:
+      defender = "{:,}".format(prof['shark_defender_kills'])
+    except:
+      defender = 0
+
     
 
     prog = ""
     prog += f"Hammerhead: {hammerhead}/100\n"
+    prog += f"Ocean's Explorer: {explorer}/1,000\n"
+    prog += f"Ocean's Defender: {defender}/250\n"
 
-    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
   #
   # DREADLORD
