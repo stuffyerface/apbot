@@ -2183,12 +2183,77 @@ def get_mwprog(prof,player,kit):
     prog += f"Everblind: {everblind}/250\n"
     progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
+    
+  #
+  # ANGEL
+  #
+  elif(kit == "angel"):
+    progress = discord.Embed(
+      title = f"Angel skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
 
+    try:
+      rewriting_fate = "{:,}".format(prof['angel_divine_interventions'])
+    except:
+      rewriting_fate = 0
+
+    prog = ""
+    prog += f"Rewriting Fate: {rewriting_fate}/250\n"
+    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+    
+  #
+  # DRAGON
+  #
+  elif(kit == "dragon"):
+    progress = discord.Embed(
+      title = f"Dragon skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      ashes_to_ashes = "{:,}".format(prof['dragon_final_kills_with_fire'])
+    except:
+      ashes_to_ashes = 0
+
+    prog = ""
+    prog += f"Ashes to Ashes: {ashes_to_ashes}/5\n"
+    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+    
+  #
+  # SHEEP
+  #
+  elif(kit == "sheep"):
+    progress = discord.Embed(
+      title = f"Sheep skin progress for player {player}",
+      colour = discord.Colour.orange()
+    )
+    progress.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
+    progress.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
+
+    try:
+      perfect_disguise = "{:,}".format(prof['sheep_perfect_disguises'])
+    except:
+      perfect_disguise = 0
+
+    try:
+      woolly_respite = "{:,}".format(prof['sheep_amount_healed'])
+    except:
+      woolly_respite = 0
+
+    prog = ""
+    prog += f"Perfect Disguise: {perfect_disguise}/100\n"
+    prog += f"Woolly Respite: {woolly_respite}/250\n"
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
 
   else:
     progress = discord.Embed(
       title = f"Unsupported class '{kit}', try using one of these:",
-      description = "cow, hunter, shark, dreadlord, golem, herobrine, zombie, arcanist, shaman, squid, enderman, blaze, skeleton, spider, creeper, assassin, werewolf, phoenix, automaton, moleman, renegade, pigman, pirate, or snowman",
+      description = "cow, hunter, shark, dreadlord, golem, herobrine, zombie, arcanist, shaman, squid, enderman, blaze, skeleton, spider, creeper, assassin, werewolf, phoenix, automaton, moleman, renegade, pigman, pirate, snowman, angel, dragon, or sheep",
       colour = discord.Colour.red()
     )
   return progress
