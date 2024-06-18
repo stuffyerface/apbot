@@ -1519,13 +1519,19 @@ def get_mwprog(prof,player,kit):
     except:
       breadlord = 0
 
+    try:
+      gathering_ti = "{:,}".format(prof['dreadlord_dark_matter_armor'])
+    except:
+      gathering_ti = 0
+
     
 
     prog = ""
     prog += f"Rushlord: {rushlord}/20,000\n"
     prog += f"Breadlord: {breadlord}/617\n"
+    prog += f"Gathering Talent Indeed: {gathering_ti}/500\n"
 
-    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
   #
   # GOLEM
