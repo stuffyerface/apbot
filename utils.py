@@ -1774,12 +1774,24 @@ def get_mwprog(prof,player,kit):
       geronimo = "{:,}".format(prof['spider_meters_fallen'])
     except:
       geronimo = 0
+
+    # try:
+    #   idfsg = "{:,}".format(prof['spider_meters_fallen'])
+    # except:
+    #   idfsg = 0
+
+    try:
+      one_giant_leap = "{:,}".format(prof['spider_a_kills'])
+    except:
+      one_giant_leap = 0
     
 
     prog = ""
     prog += f"Geronimo: {geronimo}/25,000\n"
+    # prog += f"i dont feel so good: {idfsg}/600\n"
+    prog += f"One Giant Leap: {one_giant_leap}/250\n"
 
-    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
 
   
   #
