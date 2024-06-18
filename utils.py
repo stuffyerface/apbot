@@ -871,15 +871,15 @@ def legs(profile):
 
   if('walls3_legendary_blaze' in ap):
     count += 1
-    data2 += f"{emoji1} Legendary Blaze\n"
+    data += f"{emoji1} Legendary Blaze\n"
   else:
-    data2 += f"{emoji2} Legendary Blaze\n"
+    data += f"{emoji2} Legendary Blaze\n"
 
   if('walls3_legendary_skeleton' in ap):
     count += 1
-    data2 += f"{emoji1} Legendary Skeleton\n"
+    data += f"{emoji1} Legendary Skeleton\n"
   else:
-    data2 += f"{emoji2} Legendary Skeleton\n"
+    data += f"{emoji2} Legendary Skeleton\n"
 
   if('walls3_legendary_spider' in ap):
     count += 1
@@ -947,6 +947,24 @@ def legs(profile):
   else:
     data2 += f"{emoji2} Legendary Snowman\n"
 
+  if('walls3_legendary_dragon' in ap):
+    count += 1
+    data2 += f"{emoji1} Legendary Dragon\n"
+  else:
+    data2 += f"{emoji2} Legendary Dragon\n"
+
+  if('walls3_legendary_sheep' in ap):
+    count += 1
+    data2 += f"{emoji1} Legendary Sheep\n"
+  else:
+    data2 += f"{emoji2} Legendary Sheep\n"
+
+  if('walls3_legendary_angel' in ap):
+    count += 1
+    data2 += f"{emoji1} Legendary Angel\n"
+  else:
+    data2 += f"{emoji2} Legendary Angel\n"
+
   
   legs = discord.Embed(
     title = f"{player}'s Legendaries",
@@ -958,7 +976,7 @@ def legs(profile):
   legs.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/MegaWalls-64.png")
 
   legs.add_field(
-    name = f"{count}/24 Achieved ({round(100*count/24,2)}%)",
+    name = f"{count}/27 Achieved ({round(100*count/27,2)}%)",
     value = f"{data}"
   )
   legs.add_field(
