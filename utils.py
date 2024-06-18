@@ -1994,13 +1994,19 @@ def get_mwprog(prof,player,kit):
       captain_combo = "{:,}".format(prof['renegade_energy_from_grappling_hook'])
     except:
       captain_combo = 0
+
+    try:
+      chased_down = "{:,}".format(prof['renegade_final_kills_after_grappling_hook'])
+    except:
+      chased_down = 0
     
 
     prog = ""
     prog += f"Recycling: {recycling}/3,000\n"
     prog += f"Captain Combo: {captain_combo}/20,000\n"
+    prog += f"Chased Down: {chased_down}/20\n"
 
-    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
   #
   # SNOWMAN
