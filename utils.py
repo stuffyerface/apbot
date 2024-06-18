@@ -2044,7 +2044,7 @@ def get_mwprog(prof,player,kit):
     prog += f"Revenge of the Wolves: {revenge_of_the_wolves}/5\n"
     prog += f"Living on the Edge: {spring_hero}/250\n"
 
-    progress.add_field(name = "4 tracked skins", value = f"{prog}")
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
   
   #
   # PIGMAN
@@ -2136,10 +2136,16 @@ def get_mwprog(prof,player,kit):
     except:
       trust_me_im = 0
 
+    try:
+      everblind = "{:,}".format(prof['squid_inner_ink_blinds'])
+    except:
+      everblind = 0
+
     prog = ""
     prog += f"You shall not pass: {you_shall_not_pass}/10\n"
     prog += f"Trust me I'm a doctor: {trust_me_im}/2,500\n"
-    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+    prog += f"Everblind: {everblind}/250\n"
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
 
 
