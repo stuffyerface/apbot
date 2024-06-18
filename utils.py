@@ -1549,12 +1549,18 @@ def get_mwprog(prof,player,kit):
       timber = "{:,}".format(prof['golem_wood_chopped'])
     except:
       timber = 0
+
+    try:
+      iron_hearted = "{:,}".format(prof['golem_iron_heart_absorption'])
+    except:
+      iron_hearted = 0
     
 
     prog = ""
     prog += f"Timber!: {timber}/5,000\n"
+    prog += f"Iron Hearted: {iron_hearted}/1,000\n"
 
-    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
 
   #
   # HEROBRINE
@@ -2032,12 +2038,24 @@ def get_mwprog(prof,player,kit):
     except:
       collector = 0
 
+    try:
+      young_thug = "{:,}".format(prof['pigman_enduranced_final_kills'])
+    except:
+      young_thug = 0
+
+    try:
+      tough_skin = "{:,}".format(prof['pigman_resistance_time_seconds'])
+    except:
+      tough_skin = 0
+
     
 
     prog = ""
     prog += f"Collector: {collector}/500\n"
+    prog += f"Young Thug: {young_thug}/5\n"
+    prog += f"Tough Skin: {tough_skin}/500\n"
 
-    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
       
   #
   # PIRATE
