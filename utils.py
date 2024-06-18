@@ -1623,12 +1623,17 @@ def get_mwprog(prof,player,kit):
       hard_as_steel = "{:,}".format(prof['arcanist_a_blocks_broken'])
     except:
       hard_as_steel = 0
+    try:
+      abil_spammer = "{:,}".format(prof['arcanist_a_activations'])
+    except:
+      abil_spammer = 0
 
     prog = ""
     prog += f"Potions of death: {potions_of_death}/8\n"
     prog += f"Hard as Steel: {hard_as_steel}/5,000\n"
+    prog += f"abil spammer: {abil_spammer}/1,000\n"
 
-    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
 
   
   #
