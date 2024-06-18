@@ -1799,11 +1799,17 @@ def get_mwprog(prof,player,kit):
     except:
       mass_destruction = 0
     
+    try:
+      instaboom = "{:,}".format(prof['creeper_primed_tnt_kills'])
+    except:
+      instaboom = 0
+    
 
     prog = ""
     prog += f"Mass Destruction: {mass_destruction}/3,000\n"
+    prog += f"INSTABOOM!: {instaboom}/20\n"
 
-    progress.add_field(name = "1 tracked skin", value = f"{prog}")
+    progress.add_field(name = "2 tracked skins", value = f"{prog}")
 
   #
   # ASSASSIN
