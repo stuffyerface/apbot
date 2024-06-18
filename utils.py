@@ -1395,12 +1395,27 @@ def get_mwprog(prof,player,kit):
       bio_restore = "{:,}".format(prof['cow_players_healed'])
     except:
       bio_restore = 0
+
+
+    try:
+      btg1 = prof['final_kills_after_final_killed']
+    except:
+      btg1 = 0
+    try:
+      btg2 = prof['final_assists_after_final_killed']
+    except:
+      btg2 = 0
+    try:
+      beyond_the_grave = "{:,}".format(btg1+btg2)
+    except:
+      beyond_the_grave = 0
     
 
     prog = ""
     prog += f"Moo Brawl: {moo_brawl}/600\n"
     prog += f"Greedy Louis: {greedy_louis}/500\n"
     prog += f"Biological Restoration: {bio_restore}/2,500\n"
+    prog += f"Beyond the Grave: {beyond_the_grave}/15\n"
 
     progress.add_field(name = "3 tracked skins", value = f"{prog}")
   
