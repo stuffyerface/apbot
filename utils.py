@@ -2108,13 +2108,19 @@ def get_mwprog(prof,player,kit):
     except:
       death_from_above = 0
 
+    try:
+      burial_at_sea = "{:,}".format(prof['pirate_final_water_kills'])
+    except:
+      burial_at_sea = 0
+
     
 
     prog = ""
     prog += f"Grave Robber: {grave_robber}/100\n"
     prog += f"Death from Above: {death_from_above}/12\n"
+    prog += f"Burial at Sea: {burial_at_sea}/5\n"
 
-    progress.add_field(name = "2 tracked skins", value = f"{prog}")
+    progress.add_field(name = "3 tracked skins", value = f"{prog}")
     
   #
   # SQUID
