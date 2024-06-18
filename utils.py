@@ -1774,14 +1774,19 @@ def get_mwprog(prof,player,kit):
       hunting_season = "{:,}".format(prof['werewolf_meters_walked_speed'])
     except:
       hunting_season = 0
+    try:
+      howling_moon = "{:,}".format(prof['werewolf_a_enemies_hit_standard'])
+    except:
+      howling_moon = 0
     
 
     prog = ""
     prog += f"Dirty Dog: {dirty_dog}/15\n"
     prog += f"Time to Diet: {time_to_diet}/750\n"
     prog += f"Hunting Season: {hunting_season}/50,000\n"
+    prog += f"Howling Moon: {howling_moon}/1,000\n"
 
-    progress.add_field(name = "3 tracked skins", value = f"{prog}")
+    progress.add_field(name = "4 tracked skins", value = f"{prog}")
 
   #
   # PHOENIX
