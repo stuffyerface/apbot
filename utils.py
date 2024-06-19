@@ -1714,7 +1714,7 @@ def get_mwprog(prof,player,kit):
       high_on_ores = 0
 
     try:
-      light_em_up = "{:,}".format(prof['blaze_on_fire_kills'])
+      light_em_up = "{:,}".format(prof['blaze_on_fire_final_kills'])
     except:
       light_em_up = 0
 
