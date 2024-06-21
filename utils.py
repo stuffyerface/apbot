@@ -452,17 +452,17 @@ def get_tourney(uuid):
     return "ERROR"
   else:
     tourney = discord.Embed(
-      title = f"Active Tournament: TNT Run #2",
+      title = f"Active Tournament: Skywars Doubles #1",
       colour = discord.Colour.red()
     )
 
     tourney.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
 
-    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/TNT-64.png")
+    tourney.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/Skywars-64.png")
 
     player = json_data['player']['displayname']
     try:
-      new = json_data['player']['tourney']['tnt_run_1']
+      new = json_data['player']['tourney']['sw_normal_doubles_0']
     except:
       new = []
       
@@ -482,19 +482,25 @@ def get_tourney(uuid):
       minplayed = 0
       
     try:
-      twins = json_data['player']['stats']['TNTGames']['wins_tourney_tnt_run_1']
+      twins = json_data['player']['stats']['SkyWars']['tourney_sw_normal_doubles_0_wins']
     except:
       twins = 0
       
     try:
-      tlosses = json_data['player']['stats']['TNTGames']['deaths_tourney_tnt_run_1']
+      tlosses = json_data['player']['stats']['SkyWars']['tourney_sw_normal_doubles_0_losses']
     except:
       tlosses = 0
+      
+    try:
+      tstreak = json_data['player']['stats']['SkyWars']['tourney_sw_normal_doubles_0_win_streak']
+    except:
+      tstreak = 0
 
-    val = f"{player} has played **{games}/80** games so far\n"
+    val = f"{player} has played **{games}/120** games so far\n"
     val += f"with **{tributes}/100** tributes earned\n"
     val += f"and **{minplayed}** minutes played!\n\n"
-    val += f"Wins: {twins}, Losses: {tlosses}"
+    val += f"Wins: {twins}, Losses: {tlosses}\n"
+    val += f"Current Winstreak: {tstreak}"
 
     tourney.add_field(
       name = f"\u200b",
