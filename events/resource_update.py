@@ -36,7 +36,7 @@ class ResourceUpdate(BaseEvent):
         gmres = json.loads(gameres.text)
         if gmres["success"] == True:
           lu = gmres["lastUpdated"]
-          if lu != settings.GAMES_LAST_UPDATED:
+          if lu > settings.GAMES_LAST_UPDATED:
             if(settings.GAMES_LAST_UPDATED != 0):
               rt = datetime.utcfromtimestamp(lu/1000).strftime('%m/%d/%Y %H:%M')
               channel = client.get_channel(818611323755036702)
