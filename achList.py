@@ -111,5 +111,5 @@ aplist = [
   ["walls", "Walls"],
   ["walls3", "Mega Walls"],
   ["warlords", "Warlords"],
-  ["woolgames", "Wool Wars"]
+  ["woolgames", "Wool Games"]
 ]
