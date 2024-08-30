@@ -379,7 +379,7 @@ def get_maxes(uuid):
 
 def get_roles(username):
   roles = []
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&name={username}")
+  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={get_uuid(username)}")
   json_data = json.loads(response.text)
   try:
     ap = json_data['player']['achievementPoints']
