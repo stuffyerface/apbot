@@ -434,16 +434,30 @@ def get_Name(player):
   return player
 
 def get_discord(uuid):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
-  json_data = json.loads(response.text)
-  if(json_data['success'] == 'false'):
-    return "ERROR"
-  else:
     try:
-        discTag = json_data['player']['socialMedia']['links']['DISCORD']
-        return discTag
-    except:
-      return "ERROR"
+        # Make the request to the Hypixel API
+        response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+        
+        # Check if the request was successful
+        if response.status_code != 200:
+            return "ERROR"
+        
+        # Parse the JSON response
+        json_data = response.json()  # Directly use response.json() to parse the JSON
+        
+        # Check if the API request was successful
+        if not json_data.get('success', False):
+            return "ERROR"
+        
+        # Try to extract the Discord tag
+        social_media = json_data.get('player', {}).get('socialMedia', {})
+        disc_tag = social_media.get('links', {}).get('DISCORD', "ERROR")
+        return disc_tag
+    
+    except (requests.RequestException, json.JSONDecodeError) as e:
+        # Handle network-related or JSON parsing errors
+        print(f"Exception occurred: {e}")
+        return "ERROR"
 
 def get_tourney(uuid):
   response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
