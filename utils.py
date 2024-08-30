@@ -334,46 +334,47 @@ def get_profile(uuid):
   return json_data
 
 def get_maxes(uuid):
-  profile = get_profile(uuid)
-  aplist = achList.aplist
-  maxes = []
-  for x in aplist:
-    includelegacy = False
-    apgame = x[0]
-    apgamename = x[1]
-    if apgame in ["skyclash", "truecombat"]:
-      includelegacy = True
-    tempgive = True
-    for y in achres['achievements'][apgame]["one_time"]:
-      apdata = apgame + "_" + y.lower()
-      try:
-        if achres['achievements'][apgame]["one_time"][y]["legacy"] == True:
-          legacy = True
-      except:
-        legacy = False
-      if apdata not in profile["player"]["achievementsOneTime"] and ((not legacy) or includelegacy):
-        tempgive = False
-        print(f"Missing {apdata}")
-        break
-    if(tempgive):
-      for y in achres['achievements'][apgame]["tiered"]:
-        apdata = apgame + "_" + y.lower()
-        try:
-          playerap = profile["player"]["achievements"][apdata]
-        except:
-          playerap = 0
-        try:
-          if achres['achievements'][apgame]["tiered"][y]["legacy"] == True:
-            legacy = True
-        except:
-          legacy = False
-        if playerap < achres['achievements'][apgame]["tiered"][y]["tiers"][-1]["amount"] and ((not legacy) or includelegacy):
-          tempgive = False
-          print("Missing " + achres['achievements'][apgame]["tiered"][y]["name"])
-          break
-    if(tempgive):
-      maxes += [apgamename]
-  return maxes
+    profile = get_profile(uuid)
+    aplist = achList.aplist
+    maxes = []
+
+    # Ensure profile is valid
+    if not isinstance(profile, dict) or 'player' not in profile:
+        print("Invalid profile data")
+        return []
+
+    for x in aplist:
+        includelegacy = x[0] in ["skyclash", "truecombat"]
+        apgame = x[0]
+        apgamename = x[1]
+        tempgive = True
+
+        for y in achres.get('achievements', {}).get(apgame, {}).get("one_time", {}):
+            apdata = f"{apgame}_{y.lower()}"
+            legacy = achres.get('achievements', {}).get(apgame, {}).get("one_time", {}).get(y, {}).get("legacy", False)
+            
+            if apdata not in profile["player"].get("achievementsOneTime", []) and ((not legacy) or includelegacy):
+                tempgive = False
+                print(f"Missing {apdata}")
+                break
+
+        if tempgive:
+            for y in achres.get('achievements', {}).get(apgame, {}).get("tiered", {}):
+                apdata = f"{apgame}_{y.lower()}"
+                playerap = profile["player"]["achievements"].get(apdata, 0)
+                legacy = achres.get('achievements', {}).get(apgame, {}).get("tiered", {}).get(y, {}).get("legacy", False)
+                
+                required_amount = achres.get('achievements', {}).get(apgame, {}).get("tiered", {}).get(y, {}).get("tiers", [{}])[-1].get("amount", 0)
+                
+                if playerap < required_amount and ((not legacy) or includelegacy):
+                    tempgive = False
+                    print(f"Missing {achres.get('achievements', {}).get(apgame, {}).get('tiered', {}).get(y, {}).get('name', 'Unknown')}")
+                    break
+
+        if tempgive:
+            maxes.append(apgamename)
+
+    return maxes
 
 
 def get_roles(username):
