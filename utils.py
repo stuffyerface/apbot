@@ -3,6 +3,7 @@ from os         import remove
 
 from discord    import HTTPException
 from emoji      import emojize
+from functools import wraps
 
 import discord
 import requests
@@ -14,6 +15,7 @@ import datetime
 import achList
 import embeds
 import random
+import time
 
 
 apres = requests.get("https://api.hypixel.net/resources/achievements")
@@ -81,6 +83,36 @@ def get_emoji(emoji_name, fail_silently=False):
         raise ValueError(f"Emoji {alias} not found!")
 
     return the_emoji
+
+cache = {}
+def cache_response(timeout):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            # Create a cache key based on function name and arguments
+            cache_key = (func.__name__, args, tuple(kwargs.items()))
+            current_time = time.time()
+            
+            # Check if the response is in the cache and not expired
+            if cache_key in cache:
+                response, timestamp = cache[cache_key]
+                if current_time - timestamp < timeout:
+                    return response
+            
+            # Call the function and store the response in the cache
+            response = func(*args, **kwargs)
+            cache[cache_key] = (response, current_time)
+            return response
+        return wrapper
+    return decorator
+
+@cache_response(90)
+def getStatus(uuid):
+  return requests.get(f"https://api.hypixel.net/status?key={apiKey}&uuid={uuid}")
+
+@cache_response(90)
+def getPlayer(uuid):
+  return requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
 
 gamesAlias = {
   "suhc" : "speeduhc",
@@ -274,7 +306,7 @@ async def removeroles(member,roles):
   return
 
 def get_status(uuid):
-  response = requests.get(f"https://api.hypixel.net/status?key={apiKey}&uuid={uuid}")
+  response = getStatus(uuid)
   json_data = json.loads(response.text)
   if json_data["success"] == False:
     print("Error getting status for " + uuid)
@@ -325,7 +357,7 @@ def checkbeta(channel):
 
 
 def get_profile(uuid):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  response = getPlayer(uuid)
   json_data = json.loads(response.text)
   if json_data["success"] == False:
     print("Error getting profile for " + uuid)
@@ -379,7 +411,7 @@ def get_maxes(uuid):
 
 def get_roles(username):
   roles = []
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={get_uuid(username)}")
+  response = getPlayer(get_uuid(username))
   json_data = json.loads(response.text)
   try:
     ap = json_data['player']['achievementPoints']
@@ -427,6 +459,7 @@ def get_uuid(player):
     uuid = json.loads(response.text)['id']
     return uuid
   except:
+    print("Something went wrong, mojang hates you.")
     return "ERROR"
   
 def get_Name(player):
@@ -437,7 +470,7 @@ def get_Name(player):
 def get_discord(uuid):
     try:
         # Make the request to the Hypixel API
-        response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+        response = getPlayer(uuid)
         
         # Check if the request was successful
         if response.status_code != 200:
@@ -461,7 +494,7 @@ def get_discord(uuid):
         return "ERROR"
 
 def get_tourney(uuid):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  response = getPlayer(uuid)
   json_data = json.loads(response.text)
   if(json_data['success'] == 'false'):
     return "ERROR"
@@ -525,7 +558,7 @@ def get_tourney(uuid):
     return tourney
 
 def get_wwclass(uuid):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  response = getPlayer(uuid)
   json_data = json.loads(response.text)
   if(json_data['success'] == 'false'):
     return "ERROR"
@@ -538,7 +571,7 @@ def get_wwclass(uuid):
     return ret
 
 def get_tnt(uuid):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  response = getPlayer(uuid)
   json_data = json.loads(response.text)
   if(json_data['success'] == 'false'):
     return "ERROR"
@@ -615,7 +648,7 @@ def get_tnt(uuid):
     return tnt
     
 def get_tkr(uuid):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  response = getPlayer(uuid)
   json_data = json.loads(response.text)
   if(json_data['success'] == 'false'):
     return "ERROR"
@@ -740,7 +773,7 @@ def blitz(profile):
   return blitz
 
 def get_blitz(uuid):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  response = getPlayer(uuid)
   json_data = json.loads(response.text)
   if(json_data['success'] == 'false'):
     return "ERROR"
@@ -799,7 +832,7 @@ def woolwars(profile):
   
 
 def get_ww(uuid):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  response = getPlayer(uuid)
   json_data = json.loads(response.text)
   if(json_data['success'] == 'false'):
     return "ERROR"
@@ -1008,7 +1041,7 @@ def legs(profile):
   return legs
 
 def get_legs(uuid):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  response = getPlayer(uuid)
   json_data = json.loads(response.text)
   if(json_data['success'] == 'false'):
     return "ERROR"
@@ -1201,7 +1234,7 @@ def bwc(profile):
   
 
 def get_bwchallenges(uuid):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  response = getPlayer(uuid)
   json_data = json.loads(response.text)
   if(json_data['success'] == 'false'):
     return "ERROR"
@@ -1288,7 +1321,7 @@ def get_pstats(prof,player,uuid):
   return progress
 
 def get_stats(player):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={player}")
+  response = getPlayer(player)
   json_data = json.loads(response.text)
   if(json_data['success'] == False):
     return "ERROR"
@@ -1376,10 +1409,10 @@ def get_pitprog(prof,player):
   return progress
 
 def get_pitprogress(uuid):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  response = getPlayer(uuid)
   json_data = json.loads(response.text)
   if(json_data['success'] == False):
-    print(apiKey + uuid)
+    print(json_data)
     return "ERROR"
   else:
     ret = json_data['player']['stats']['Pit']
@@ -2281,7 +2314,7 @@ def get_mwprog(prof,player,kit):
 
 
 def get_mw(uuid,kit):
-  response = requests.get(f"https://api.hypixel.net/player?key={apiKey}&uuid={uuid}")
+  response = getPlayer(uuid)
   json_data = json.loads(response.text)
   if(json_data['success'] == False):
     return "ERROR"
@@ -2292,7 +2325,7 @@ def get_mw(uuid,kit):
     return progress
 
 def get_session(uuid):
-  response = requests.get(f"https://api.hypixel.net/status?key={apiKey}&uuid={uuid}")
+  response = getStatus(uuid)
   json_data = json.loads(response.text)
   if(json_data['success'] == 'false'):
     return -1

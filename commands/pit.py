@@ -33,11 +33,14 @@ class Pit(BaseCommand):
           username = params[0]
           uuid = get_uuid(username)
           if(uuid == "ERROR"):
-            await message.channel.send("ERROR")
+            await message.channel.send("Mojang api broke")
             return
           else:
             progress = get_pitprogress(uuid)
           
-          print(progress)
+          if(progress == "ERROR"):
+            await message.channel.send("Hypixel api broke")
+            return
+             
 
           await message.channel.send(content= "", embed = progress)
