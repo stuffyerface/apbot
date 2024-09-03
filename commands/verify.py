@@ -46,6 +46,8 @@ class Verify(BaseCommand):
           
           if(progress == -2):
             msg = f"{username} was not found in Mojang API"
+          elif(progress == "NA"):
+            msg = "Could not find linked discord for that account."
           elif(progress == "ERROR"):
             msg = "Make sure to link your discord in your hypixel settings and try verifying again."
           else:

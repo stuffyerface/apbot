@@ -471,21 +471,23 @@ def get_discord(uuid):
     try:
         # Make the request to the Hypixel API
         response = getPlayer(uuid)
-        
+
+
         # Check if the request was successful
         if response.status_code != 200:
             return "ERROR"
-        
+
         # Parse the JSON response
         json_data = response.json()  # Directly use response.json() to parse the JSON
-        
+
         # Check if the API request was successful
         if not json_data.get('success', False):
+            print(json_data.get("cause"))
             return "ERROR"
-        
+
         # Try to extract the Discord tag
         social_media = json_data.get('player', {}).get('socialMedia', {})
-        disc_tag = social_media.get('links', {}).get('DISCORD', "ERROR")
+        disc_tag = social_media.get('links', {}).get('DISCORD', "NA")
         return disc_tag
     
     except (requests.RequestException, json.JSONDecodeError) as e:
