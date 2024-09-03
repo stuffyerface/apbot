@@ -24,7 +24,7 @@ sched = AsyncIOScheduler()
 def main():
     # Initialize the client
     print("Starting up...")
-    client = discord.Client(intents=discord.Intents.default())
+    client = discord.Client(intents=discord.Intents.all())
 
     # Define event handlers for the client
     # on_ready may be called multiple times in the event of a reconnect,
