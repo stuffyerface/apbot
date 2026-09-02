@@ -720,8 +720,6 @@ def blitz(profile):
   except:
     return "ERROR"
   player = profile['player']['displayname']
-  count = 0
-  data = ""
 
   try:
     b1 = bz['exp_ranger']
@@ -743,34 +741,38 @@ def blitz(profile):
   except:
     b4 = 0
 
-  b1a = f" ({round(b1/100,2)}%)"
+  b1a = f" ({round(b1/100, 2)}%)"
+  b1f = int(b1/1000)
+  b1bar = f"[{'█' * b1f}{'░' * (10 - b1f)}]"
   b1 = "{:,}".format(b1)
-  b2a = f" ({round(b2/100,2)}%)"
+  
+  b2a = f" ({round(b2/100, 2)}%)"
+  b2f = int(b2/1000)
+  b2bar = f"[{'█' * b2f}{'░' * (10 - b2f)}]"
   b2 = "{:,}".format(b2)
-  b3a = f" ({round(b3/100,2)}%)"
+  
+  b3a = f" ({round(b3/100, 2)}%)"
+  b3f = int(b3/1000)
+  b3bar = f"[{'█' * b3f}{'░' * (10 - b3f)}]"
   b3 = "{:,}".format(b3)
-  b4a = f" ({round(b4/100,2)}%)"
+  
+  b4a = f" ({round(b4/100, 2)}%)"
+  b4f = int(b4/1000)
+  b4bar = f"[{'█' * b4f}{'░' * (10 - b4f)}]"
   b4 = "{:,}".format(b4)
-
-
-  data += f"**Ranger** {b1}/10,000{b1a}\n"
-  data += f"**DonkeyTamer** {b2}/10,000{b2a}\n"
-  data += f"**Phoenix** {b3}/10,000{b3a}\n"
-  data += f"**Warrior** {b4}/10,000{b4a}\n"
 
   blitz = discord.Embed(
     title = f"{player}'s Blitz Ultimate Kit Xp",
     colour = discord.Colour.orange()
   )
 
-  blitz.set_footer(text = "AP bot by Stuffy", icon_url="https://crafatar.com/avatars/2cfc8db5-71ed-4eb3-aacd-53b8abff5ee2?size=100")
-
+  blitz.set_footer(text = "AP bot by Stuffy")
   blitz.set_thumbnail(url = "https://hypixel.net/styles/hypixel-v2/images/game-icons/SG-64.png")
 
-  blitz.add_field(
-    name = f"\u200b",
-    value = f"{data}"
-  )
+  blitz.add_field(name = "Ranger", value = f"{b1}/10,000{b1a}\n`{b1bar}`", inline = True)
+  blitz.add_field(name = "Donkeytamer", value = f"{b2}/10,000{b2a}\n`{b2bar}`", inline = True)
+  blitz.add_field(name = "Phoenix", value = f"{b3}/10,000{b3a}\n`{b3bar}`", inline = True)
+  blitz.add_field(name = "Warrior", value = f"{b4}/10,000{b4a}\n`{b4bar}`", inline = True)
 
   return blitz
 
